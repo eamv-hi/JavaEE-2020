@@ -3,6 +3,9 @@
 	<name>gruppe1</name>
 	<comment></comment>
 	<projects>
+		<project>gruppe1.ejb</project>
+		<project>gruppe1.web</project>
+		<project>gruppe1.ejbClient</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
