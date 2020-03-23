@@ -1,18 +1,20 @@
 package users;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
 
 import javaee.dto.TeacherDTO;
 
 @Entity
+@Table(name = "teacher_user")
 public class Teacher extends User {
 
-	@NotNull
+	@Column(name = "teacher_No", nullable = false)
     private int teacherNo;
-	@NotNull
+	@Column(name = "hiredDate", nullable = false)
 	private String hiredDate;
-	@NotNull
+	@Column(name = "jobTitle", nullable = false)
 	private String jobTitle;
 	
     public Teacher() {

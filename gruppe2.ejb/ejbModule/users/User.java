@@ -1,32 +1,46 @@
 package users;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "user")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
 	@Id
     @GeneratedValue
     private int id;
-    @NotNull
-    private String name;
-    @NotNull
-    private String lastname;
-    @NotNull
+	
+	
+    @Column(name = "fist_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(name = "email")
     private String email;
-    @NotNull
+    @Column(name = "phoneNo")
     private int phoneNo;
-    @NotNull
+    @Column(name = "role")
     private String role;
     
+    public User(int id, String firstName, String lastName, String email, int phoneNo, String role) {
+    	this.id = id;
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.email = email;
+    	this.phoneNo = phoneNo;
+    	this.role = role;
+    }
     
     public User() {
-        super();
+    	super();
     }
-
 
 	public int getId() {
 		return id;
@@ -38,23 +52,23 @@ public class User {
 	}
 
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String firstName) {
+		this.firstName = firstName;
 	}
 
 
 	public String getLastname() {
-		return lastname;
+		return lastName;
 	}
 
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastname(String lastName) {
+		this.lastName = lastName;
 	}
 
 
