@@ -15,19 +15,19 @@ public class User {
 
 	@Id
     @GeneratedValue
-    private int id;
+    protected int id;
 	
 	
     @Column(name = "fist_name")
-    private String firstName;
+    protected String firstName;
     @Column(name = "last_name")
-    private String lastName;
+    protected String lastName;
     @Column(name = "email")
-    private String email;
+    protected String email;
     @Column(name = "phoneNo")
-    private int phoneNo;
+    protected int phoneNo;
     @Column(name = "role")
-    private String role;
+    protected String role;
     
     public User(int id, String firstName, String lastName, String email, int phoneNo, String role) {
     	this.id = id;

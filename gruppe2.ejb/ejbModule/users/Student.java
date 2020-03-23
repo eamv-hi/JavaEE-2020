@@ -26,17 +26,24 @@ public class Student extends User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
     public Student(int id, String firstName, String lastName,
-    		String email, int phoneNo, String role, int studentNo) {
+    		String email, int phoneNo, String role, int studentNo,String subject) {
     	super(id, firstName, lastName, email, phoneNo, role);
     	this.studentNo = studentNo;
     }
     public Student() {
-    	
+    
     	
     }
     
     public Student(StudentDTO student) {
-    	
+    	this.id = student.getId();
+    	this.firstName = student.getFirstName();
+    	this.lastName = student.getLastName();
+    	this.email = student.getEmail();
+    	this.phoneNo = student.getPhoneNo();
+    	this.role = student.getRole();
+    	this.studentNo = student.getStudentNo();
+    	this.subject = student.getSubject();
     }
     
     

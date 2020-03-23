@@ -22,7 +22,15 @@ public class Teacher extends User {
     }
     
     public Teacher(TeacherDTO teacherdto) {
-        
+    	this.id = teacherdto.getId();
+    	this.firstName = teacherdto.getFirstName();
+    	this.lastName = teacherdto.getLastName();
+    	this.email = teacherdto.getEmail();
+    	this.phoneNo = teacherdto.getPhoneNo();
+    	this.role = teacherdto.getRole();
+    	this.teacherNo = teacherdto.getTeacherNo();
+    	this.hiredDate = teacherdto.getHiredDate();
+    	this.jobTitle = teacherdto.getJobTitle();
     }
 
 	public int getTeacherNo() {

@@ -3,12 +3,13 @@ package javaee.dto;
 public class StudentDTO {
 
     private int id;
-    private String name;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String email;
     private int phoneNo;
     private String role;
     private int studentNo;
+    private String subject;
 
     public StudentDTO() {
     	
@@ -22,20 +23,20 @@ public class StudentDTO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String name) {
+		this.firstName = name;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastname) {
+		this.lastName = lastname;
 	}
 
 	public String getEmail() {
@@ -70,5 +71,14 @@ public class StudentDTO {
 		this.studentNo = studentNo;
 	}
 
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	
 	
 }

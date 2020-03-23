@@ -5,10 +5,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.jboss.security.auth.spi.Users.User;
-
 import javaee.dto.StudentDTO;
-import users.Student;
+import javaee.dto.TeacherDTO;
 
 
 @Stateless
@@ -16,9 +14,47 @@ import users.Student;
 public class Authentication implements AuthenticationLocal {
 
 	@PersistenceContext private EntityManager em;
-    
-	public void createStudent(StudentDTO student) {
-		User users = new User();
+
+	public void student_create(StudentDTO student) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	public void teacher_create(TeacherDTO teacher) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String student_read(StudentDTO student) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String teacher_read(TeacherDTO teacher) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void student_update(StudentDTO student) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void teacher_update(TeacherDTO teacher) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void student_delete(StudentDTO student) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void teacher_delete(TeacherDTO teacher) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+	
 
 }
