@@ -1,0 +1,7 @@
+.ui-inputfield {
+	box-shadow: none;
+}
+
+.ui-inputfield.ui-state-focus {
+	box-shadow: none;
+}

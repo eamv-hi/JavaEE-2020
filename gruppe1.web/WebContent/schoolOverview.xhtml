@@ -8,6 +8,7 @@
 
 <h:head>
 	<title>Skoleoversigt</title>
+	<h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 
 <h:body>
@@ -65,13 +66,7 @@
 	</span>
 	
 	<p:commandButton value="Tilføj skole" update="schoolTable" action="#{dtSchoolView.addSchool}" style="margin-top: 5px" />
-	
-<!-- 	<p:outputLabel value="Navn:" for="name" />
-	<p:outputLabel value="Adresse:" for="address" />
-	<p:outputLabel value="Postnummer" for="postalNumber" /> -->
-
 </h:form>
-
 </html>
 
 
