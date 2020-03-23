@@ -19,6 +19,8 @@ public class Student extends User implements Serializable{
    
 	@Column(name = "student_No", nullable = false)
 	private int studentNo;
+	@Column(name = "subject", nullable = false)
+	private String subject;
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -29,7 +31,8 @@ public class Student extends User implements Serializable{
     	this.studentNo = studentNo;
     }
     public Student() {
-    	super();
+    	
+    	
     }
     
     public Student(StudentDTO student) {
