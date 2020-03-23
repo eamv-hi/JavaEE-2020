@@ -2,6 +2,7 @@
         
     <wb-module deploy-name="gruppe1.ejbClient">
         <wb-resource deploy-path="/" source-path="/ejbModule"/>
+        <wb-resource deploy-path="/" source-path="/"/>
             
     </wb-module>
     

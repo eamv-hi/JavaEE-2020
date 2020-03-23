@@ -1,32 +1,106 @@
 package users;
 
-import javax.ejb.Stateless;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
-@Stateless
-public class User implements BrugerRemote, BrugerLocal {
+@Table(name = "user")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class User {
 
 	@Id
     @GeneratedValue
     private int id;
-    @NotNull
-    private String name;
-    @NotNull
-    private String lastname;
-    @NotNull
+	
+	
+    @Column(name = "fist_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(name = "email")
     private String email;
-    @NotNull
+    @Column(name = "phoneNo")
     private int phoneNo;
-    @NotNull
+    @Column(name = "role")
     private String role;
     
+    public User(int id, String firstName, String lastName, String email, int phoneNo, String role) {
+    	this.id = id;
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.email = email;
+    	this.phoneNo = phoneNo;
+    	this.role = role;
+    }
     
     public User() {
-        // TODO Auto-generated constructor stub
+    	super();
     }
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastname() {
+		return lastName;
+	}
+
+
+	public void setLastname(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public int getPhoneNo() {
+		return phoneNo;
+	}
+
+
+	public void setPhoneNo(int phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+    
+    
 
 }
