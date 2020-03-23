@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Stateless
-public class Bruger implements BrugerRemote, BrugerLocal {
+public class User implements BrugerRemote, BrugerLocal {
 
 	@Id
     @GeneratedValue
@@ -20,12 +20,12 @@ public class Bruger implements BrugerRemote, BrugerLocal {
     @NotNull
     private String email;
     @NotNull
-    private int PhoneNm;
+    private int phoneNo;
     @NotNull
-    private String rolle;
+    private String role;
     
     
-    public Bruger() {
+    public User() {
         // TODO Auto-generated constructor stub
     }
 
