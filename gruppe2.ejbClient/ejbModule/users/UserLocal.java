@@ -3,6 +3,6 @@ package users;
 import javax.ejb.Local;
 
 @Local
-public interface BrugerLocal {
+public interface UserLocal {
 
 }
