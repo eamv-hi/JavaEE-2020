@@ -53,7 +53,7 @@ public class EducationBean implements EducationBeanRemote, EducationBeanLocal {
 
 	@Override
 	public List<EducationDTO> getAll() {
-		return em.createNamedQuery("Education.getAllEducations", Education.class)
+		return em.createNamedQuery("getAllEducations", Education.class)
 					.getResultList()
 					.stream()
 					.map(c -> c.toDTO())

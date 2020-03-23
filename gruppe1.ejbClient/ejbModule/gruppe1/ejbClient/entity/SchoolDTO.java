@@ -1,5 +1,10 @@
 package gruppe1.ejbClient.entity;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
+@Named
+@RequestScoped
 public class SchoolDTO {
 	private int schoolId;
 	private String name;
