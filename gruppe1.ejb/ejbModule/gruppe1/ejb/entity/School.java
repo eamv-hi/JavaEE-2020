@@ -5,8 +5,13 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+
+import gruppe1.ejbClient.entity.SchoolDTO;
 
 @Entity
+@NamedQuery(name="getAllSchools", query="SELECT s FROM School s")
+
 public class School implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -61,6 +66,19 @@ public class School implements Serializable {
 	
 	public int getSchoolId() {
 		return schoolId;
+	}
+	
+	public SchoolDTO toDTO() {
+		SchoolDTO schoolDTO = new SchoolDTO();
+		
+		schoolDTO.setSchoolId(schoolId);
+		schoolDTO.setName(name);
+		schoolDTO.setAddress(address);
+		schoolDTO.setPostalNumber(postalNumber);
+		schoolDTO.setCity(city);
+		schoolDTO.setPhone(phone);
+		
+		return schoolDTO;
 	}
 	
 	@Override

@@ -5,8 +5,13 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+
+import gruppe1.ejbClient.entity.CourseDTO;
 
 @Entity
+@NamedQuery(name="getAllCourses", query="SELECT c FROM Course c")
+
 public class Course implements Serializable {
 private static final long serialVersionUID = 1L;
 	
@@ -35,6 +40,16 @@ private static final long serialVersionUID = 1L;
 	
 	public int getCourseId() {
 		return courseId;
+	}
+	
+	public CourseDTO toDTO() {
+		CourseDTO courseDTO = new CourseDTO();
+		
+		courseDTO.setCourseId(courseId);
+		courseDTO.setName(name);
+		courseDTO.setTeacherName(teacherName);
+		
+		return courseDTO;
 	}
 	
 	@Override
