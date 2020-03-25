@@ -1,3 +1,7 @@
-/gruppe1.*/.classpath
+/gruppe1-*/.classpath
+/gruppe1-*/.project
+/gruppe1-*/.gitignore
 build/
 bin/
+target/
+.settings/
