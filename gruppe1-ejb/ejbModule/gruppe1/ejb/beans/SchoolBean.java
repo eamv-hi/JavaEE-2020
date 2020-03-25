@@ -50,7 +50,7 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 
 	@Override
 	public SchoolDTO get(int id) {
-		//måske problem, hvis findSchool returnerer null?
+		//mÃ¥ske problem, hvis findSchool returnerer null?
 		return findSchool(id).toDTO();
 	}
 

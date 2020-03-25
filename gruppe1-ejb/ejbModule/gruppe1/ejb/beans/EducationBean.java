@@ -47,7 +47,7 @@ public class EducationBean implements EducationBeanRemote, EducationBeanLocal {
 
 	@Override
 	public EducationDTO get(int id) {
-		//måske problem, hvis findCourse returnerer null?
+		//mÃ¥ske problem, hvis findCourse returnerer null?
 		return findEducation(id).toDTO();
 	}
 

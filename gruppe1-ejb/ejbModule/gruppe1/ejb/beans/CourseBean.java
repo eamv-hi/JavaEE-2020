@@ -47,7 +47,7 @@ public class CourseBean implements CourseBeanRemote, CourseBeanLocal {
 
 	@Override
 	public CourseDTO get(int id) {
-		//måske problem, hvis findCourse returnerer null?
+		//mÃ¥ske problem, hvis findCourse returnerer null?
 		return findCourse(id).toDTO();
 	}
 
