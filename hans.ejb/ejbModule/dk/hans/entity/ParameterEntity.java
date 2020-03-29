@@ -10,7 +10,9 @@ import dk.hans.dto.ParameterDTO;
  * Entity implementation class for Entity: Parameter
  *
  */
-@Entity
+@Entity(name = "Parameter")
+@NamedQuery(name="findParameters", query="SELECT p FROM Parameter p "
+		+ "WHERE UPPER(p.key) LIKE :search OR UPPER(p.value) LIKE :search")
 
 public class ParameterEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
