@@ -51,8 +51,8 @@ public class SchoolOverview implements Serializable {
     	schoolDTO.setPostalNumber(postalNumber);
     	schoolDTO.setCity(city);
     	schoolDTO.setPhone(phone);
-    	
-    	school.create(schoolDTO);
+
+    	schools.add(school.create(schoolDTO));
     }
     
     public void onRowEdit(RowEditEvent<SchoolDTO> event) {
