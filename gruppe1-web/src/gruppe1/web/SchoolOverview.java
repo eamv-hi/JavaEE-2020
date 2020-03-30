@@ -56,19 +56,21 @@ public class SchoolOverview implements Serializable {
     }
     
     public void onRowEdit(RowEditEvent<SchoolDTO> event) {
-        FacesMessage msg = new FacesMessage("Car Edited " + event.getObject().getName());
+    	SchoolDTO s = event.getObject();
+    	
+        FacesMessage msg = new FacesMessage("Car Edited " + s.getName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
-//
-//        SchoolDTO schoolDTO = new SchoolDTO();
-//        schoolDTO.setAddress(event.getObject().getAddress());
-//        schoolDTO.setCity(event.getObject().getCity());
-//        schoolDTO.setName(event.getObject().getName());
-//        schoolDTO.setPhone(event.getObject().getPhone());
-//        schoolDTO.setPostalNumber(event.getObject().getPostalNumber());
-//        schoolDTO.setSchoolId(event.getObject().getSchoolId());
-//        
-//        school.update(schoolDTO);
-//        
+
+        SchoolDTO schoolDTO = new SchoolDTO();
+        schoolDTO.setAddress(s.getAddress());
+        schoolDTO.setCity(s.getCity());
+        schoolDTO.setName(s.getName());
+        schoolDTO.setPhone(s.getPhone());
+        schoolDTO.setPostalNumber(s.getPostalNumber());
+        schoolDTO.setSchoolId(s.getSchoolId());
+        
+        school.update(schoolDTO);
+        
     }
 
     
