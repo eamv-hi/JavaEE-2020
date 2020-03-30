@@ -32,6 +32,10 @@ public class Teacher extends User {
     	this.hiredDate = teacherdto.getHiredDate();
     	this.jobTitle = teacherdto.getJobTitle();
     }
+    
+    public TeacherDTO todto() {
+    	return new TeacherDTO(id, firstName, lastName, email, phoneNo, hiredDate, teacherNo, hiredDate, hiredDate);
+    }
 
 	public int getTeacherNo() {
 		return teacherNo;

@@ -12,7 +12,18 @@ public class StudentDTO {
     private String subject;
 
     public StudentDTO() {
-    	
+    	super();
+    }
+    
+    public StudentDTO(int id, String firstname, String lastname, String email, int phoneNo, String role, int studentNo, String subject ) {
+    	this.id = id;
+    	this.firstName = firstname;
+    	this.lastName = lastname;
+    	this.email = email;
+    	this.phoneNo = phoneNo;
+    	this.role = role;
+    	this.studentNo = studentNo;
+    	this.subject = subject;
     }
 
 	public int getId() {

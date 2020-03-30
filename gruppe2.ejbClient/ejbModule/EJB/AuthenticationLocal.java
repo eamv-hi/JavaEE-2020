@@ -13,9 +13,9 @@ public interface AuthenticationLocal {
 	
 	public void teacher_create(TeacherDTO teacher);
 	
-	public String student_read(StudentDTO student);
+	public StudentDTO student_read(int id);
 
-	public String teacher_read(TeacherDTO teacher);
+	public TeacherDTO teacher_read(int id);
 	
 	public void student_update(StudentDTO student);
 
