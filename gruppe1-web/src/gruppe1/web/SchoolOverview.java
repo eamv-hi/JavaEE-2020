@@ -20,11 +20,7 @@ import gruppe1.ejbClient.entity.SchoolDTO;
 @RequestScoped
 public class SchoolOverview implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String name;
-	private String address;
-	private int postalNumber;
-	private String city;
-	private String phone;
+	private SchoolDTO forCreate = new SchoolDTO();
 	private List<SchoolDTO> schools;
 
 	@Inject
@@ -33,6 +29,10 @@ public class SchoolOverview implements Serializable {
 	@PostConstruct
 	public void init() {
 		schools = school.getAll();
+	}
+
+	public SchoolDTO getForCreate() {
+		return forCreate;
 	}
 
 	public List<SchoolDTO> getSchools() {
@@ -44,15 +44,8 @@ public class SchoolOverview implements Serializable {
 	}
 
 	public void addSchool() {
-		SchoolDTO schoolDTO = new SchoolDTO();
-
-		schoolDTO.setName(name);
-		schoolDTO.setAddress(address);
-		schoolDTO.setPostalNumber(postalNumber);
-		schoolDTO.setCity(city);
-		schoolDTO.setPhone(phone);
-
-		schools.add(school.create(schoolDTO));
+		forCreate = school.create(forCreate);
+		schools.add(forCreate);
 	}
 
 	public void onRowEdit(RowEditEvent<SchoolDTO> event) {
@@ -72,45 +65,5 @@ public class SchoolOverview implements Serializable {
 
 		school.update(schoolDTO);
 
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public int getPostalNumber() {
-		return postalNumber;
-	}
-
-	public void setPostalNumber(int postalNumber) {
-		this.postalNumber = postalNumber;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 }
