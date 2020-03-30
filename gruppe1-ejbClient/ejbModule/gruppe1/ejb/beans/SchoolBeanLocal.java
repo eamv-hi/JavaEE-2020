@@ -6,7 +6,7 @@ import gruppe1.ejbClient.entity.SchoolDTO;
 
 @Local
 public interface SchoolBeanLocal {
-	void create(SchoolDTO school);
+	SchoolDTO create(SchoolDTO school);
 	
 	void update(SchoolDTO school);
 	

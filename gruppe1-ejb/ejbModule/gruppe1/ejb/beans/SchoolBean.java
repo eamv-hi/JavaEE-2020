@@ -24,10 +24,13 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 	private SessionContext ctx;
 	
 	@Override
-	public void create(SchoolDTO school) {
-		if (school != null) {			
-			em.persist(fromDTO(new School(), school));
+	public SchoolDTO create(SchoolDTO schoolDTO) {
+		if (schoolDTO != null) {
+			School school = fromDTO(new School(), schoolDTO);
+			em.persist(school);
+			return school.toDTO();
 		}
+		return null;
 	}
 
 	@Override
@@ -50,8 +53,8 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 
 	@Override
 	public SchoolDTO get(int id) {
-		//måske problem, hvis findSchool returnerer null?
-		return findSchool(id).toDTO();
+		School school = findSchool(id);
+		return school != null ? school.toDTO() : null;
 	}
 
 	@Override
