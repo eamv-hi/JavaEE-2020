@@ -49,21 +49,12 @@ public class SchoolOverview implements Serializable {
 	}
 
 	public void onRowEdit(RowEditEvent<SchoolDTO> event) {
-		SchoolDTO s = event.getObject();
+		SchoolDTO schoolDTO = event.getObject();
 
 		// TODO lav pænere pop up
-		FacesMessage msg = new FacesMessage("Skole med navnet " + s.getName() + " blev redigeret");
+		FacesMessage msg = new FacesMessage("Skole med navnet " + schoolDTO.getName() + " blev redigeret");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
-		SchoolDTO schoolDTO = new SchoolDTO();
-		schoolDTO.setAddress(s.getAddress());
-		schoolDTO.setCity(s.getCity());
-		schoolDTO.setName(s.getName());
-		schoolDTO.setPhone(s.getPhone());
-		schoolDTO.setPostalNumber(s.getPostalNumber());
-		schoolDTO.setSchoolId(s.getSchoolId());
-
 		school.update(schoolDTO);
-
 	}
 }
