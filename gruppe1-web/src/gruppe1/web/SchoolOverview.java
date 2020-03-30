@@ -64,17 +64,6 @@ public class SchoolOverview implements Serializable {
     }
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public String getName() {
 		return name;
 	}
