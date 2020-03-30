@@ -54,6 +54,5 @@ public class Student extends User implements Serializable{
 		this.studentNo = studentNo;
 	}
     
-    
 
 }

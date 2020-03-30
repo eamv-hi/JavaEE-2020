@@ -16,7 +16,7 @@ public class Authentication implements AuthenticationLocal {
 	@PersistenceContext private EntityManager em;
 
 	public void student_create(StudentDTO student) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

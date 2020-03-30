@@ -53,7 +53,7 @@ public class CourseBean implements CourseBeanRemote, CourseBeanLocal {
 
 	@Override
 	public List<CourseDTO> getAll() {
-		return em.createNamedQuery("Course.getAllCourses", Course.class)
+		return em.createNamedQuery("getAllCourses", Course.class)
 					.getResultList()
 					.stream()
 					.map(c -> c.toDTO())

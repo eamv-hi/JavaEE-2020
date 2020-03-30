@@ -56,7 +56,7 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 
 	@Override
 	public List<SchoolDTO> getAll() {
-		return em.createNamedQuery("School.getAllSchools", School.class)
+		return em.createNamedQuery("getAllSchools", School.class)
 					.getResultList()
 					.stream()
 					.map(c -> c.toDTO())
