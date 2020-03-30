@@ -6,7 +6,6 @@ import javax.annotation.security.RolesAllowed;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import javaee.dto.StudentDTO;
 
@@ -46,6 +45,10 @@ public class Student extends User implements Serializable{
     	this.subject = student.getSubject();
     }
     
+    public StudentDTO todto() {
+    	return new StudentDTO(id,firstName, lastName, email, phoneNo, role, studentNo, subject);
+    }
+    
     
 	public int getStudentNo() {
 		return studentNo;
@@ -53,6 +56,13 @@ public class Student extends User implements Serializable{
 	public void setStudentNo(int studentNo) {
 		this.studentNo = studentNo;
 	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
     
 
 }

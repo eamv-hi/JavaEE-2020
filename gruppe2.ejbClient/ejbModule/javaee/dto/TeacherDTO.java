@@ -13,8 +13,21 @@ public class TeacherDTO {
 	private String jobTitle;
 	
 	public TeacherDTO() {
-		
+		super();
 	}
+	
+	 public TeacherDTO(int id, String firstname, String lastname, String email, int phoneNo, String role,int teacherNo, String hireddate, String jobtitle) {
+	    	this.id = id;
+	    	this.firstName = firstname;
+	    	this.lastName = lastname;
+	    	this.email = email;
+	    	this.phoneNo = phoneNo;
+	    	this.role = role;
+	    	this.teacherNo = teacherNo;
+	    	this.hiredDate = hireddate;
+	    	this.jobTitle = jobtitle;
+	    	
+	    }
 
 	public int getId() {
 		return id;
