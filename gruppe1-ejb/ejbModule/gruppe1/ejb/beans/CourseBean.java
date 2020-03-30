@@ -16,13 +16,13 @@ import gruppe1.ejbClient.entity.CourseDTO;
 public class CourseBean implements CourseBeanRemote, CourseBeanLocal {
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Resource
 	private SessionContext ctx;
-	
+
 	@Override
 	public void create(CourseDTO course) {
-		if (course != null) {			
+		if (course != null) {
 			em.persist(fromDTO(new Course(), course));
 		}
 	}
@@ -30,8 +30,8 @@ public class CourseBean implements CourseBeanRemote, CourseBeanLocal {
 	@Override
 	public void update(CourseDTO course) {
 		Course entity = findCourse(course.getCourseId());
-		
-		if (entity != null && course != null) {			
+
+		if (entity != null && course != null) {
 			em.persist(fromDTO(entity, course));
 		}
 	}
@@ -39,34 +39,34 @@ public class CourseBean implements CourseBeanRemote, CourseBeanLocal {
 	@Override
 	public void delete(int id) {
 		Course entity = findCourse(id);
-		
-		if (entity != null) {			
+
+		if (entity != null) {
 			em.remove(entity);
 		}
 	}
 
 	@Override
 	public CourseDTO get(int id) {
-		//måske problem, hvis findCourse returnerer null?
+		// måske problem, hvis findCourse returnerer null?
 		return findCourse(id).toDTO();
 	}
 
 	@Override
 	public List<CourseDTO> getAll() {
 		return em.createNamedQuery("getAllCourses", Course.class)
-					.getResultList()
-					.stream()
-					.map(c -> c.toDTO())
-					.collect(Collectors.toList());
+				.getResultList()
+				.stream()
+				.map(c -> c.toDTO())
+				.collect(Collectors.toList());
 	}
-	
+
 	private Course fromDTO(Course course, CourseDTO dto) {
 		course.setName(dto.getName());
 		course.setTeacherName(dto.getTeacherName());
-		
+
 		return course;
 	}
-	
+
 	private Course findCourse(int id) {
 		return em.find(Course.class, id);
 	}
