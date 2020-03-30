@@ -3,6 +3,7 @@ package dk.hans.ejb;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
 
@@ -13,15 +14,16 @@ import dk.hans.dto.ParameterDTO;
  */
 @Stateless
 public class ParameterBean implements ParameterBeanLocal {
+	@EJB private ParameterEM em;
 
 	@Override
 	public ParameterDTO findParameter(String key) {
-		return new ParameterDTO("Hans", "Iversen");
+		return em.read(key);
 	}
 
 	@Override
 	public List<ParameterDTO> searchParameters(String search) {
-		return Arrays.asList(new ParameterDTO("key1", "value1"), new ParameterDTO("key2", "value2"));
+		return em.find(search);
 	}
 
 }

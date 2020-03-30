@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<!--        xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" -->
+
+<h:head>
+	<title>Skoleoversigt</title>
+	<h:outputStylesheet library="css" name="style.css"/>
+</h:head>
+
+<h:body>
+	<p:dataTable id="schoolTable" var="school" value="#{dtSchoolView.schools}">
+		<p:column headerText="Id">
+			<h:outputText value="#{school.schoolId}" />
+		</p:column>
+
+		<p:column headerText="Navn">
+			<h:outputText value="#{school.name}" />
+		</p:column>
+
+		<p:column headerText="Adresse">
+			<h:outputText value="#{school.address}" />
+		</p:column>
+
+		<p:column headerText="Postnummer">
+			<h:outputText value="#{school.postalNumber}" />
+		</p:column>
+
+		<p:column headerText="By">
+			<h:outputText value="#{school.city}" />
+		</p:column>
+
+		<p:column headerText="Telefon">
+			<h:outputText value="#{school.phone}" />
+		</p:column>
+	</p:dataTable>
+</h:body>
+
+<h:form style="margin-top: 30px">
+	<span class="ui-float-label" style="display: block">
+		<p:inputText id="float-input1" value="#{dtSchoolView.name}" />
+		<p:outputLabel for="@previous" value="Navn" />
+	</span>
+
+	<span class="ui-float-label" style="display: block; margin-top: 20px">
+		<p:inputText id="float-input2" value="#{dtSchoolView.address}" />
+		<p:outputLabel for="@previous" value="Adresse" />
+	</span>
+	
+		<span class="ui-float-label" style="display: block; margin-top: 20px">
+		<p:inputText id="float-input3" value="#{dtSchoolView.postalNumber}" />
+		<p:outputLabel for="@previous" value="Postnummer" />
+	</span>
+	
+		<span class="ui-float-label" style="display: block; margin-top: 20px">
+		<p:inputText id="float-input4" value="#{dtSchoolView.city}" />
+		<p:outputLabel for="@previous" value="By" />
+	</span>
+	
+		<span class="ui-float-label" style="display: block; margin-top: 20px">
+		<p:inputText id="float-input5" value="#{dtSchoolView.phone}" />
+		<p:outputLabel for="@previous" value="Telefonnr." />
+	</span>
+	
+	<p:commandButton value="Tilføj skole" update="schoolTable" action="#{dtSchoolView.addSchool}" style="margin-top: 5px" />
+</h:form>
+</html>
+
+
