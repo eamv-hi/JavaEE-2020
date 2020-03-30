@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-@Named("")
+@Named("dtTeamView")
 @RequestScoped
 public class TeamOverview {
 	private static final long serialVersionUID = 1L;
