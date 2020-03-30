@@ -1,13 +1,12 @@
 package dk.hans.ejb;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.jws.WebService;
 
 import dk.hans.dto.ParameterDTO;
+import dk.hans.wsclient.RestWsClient;
 
 /**
  * Session Bean implementation class ParameterBean
@@ -15,6 +14,7 @@ import dk.hans.dto.ParameterDTO;
 @Stateless
 public class ParameterBean implements ParameterBeanLocal {
 	@EJB private ParameterEM em;
+	@EJB private RestWsClient test;
 
 	@Override
 	public ParameterDTO findParameter(String key) {
@@ -24,6 +24,11 @@ public class ParameterBean implements ParameterBeanLocal {
 	@Override
 	public List<ParameterDTO> searchParameters(String search) {
 		return em.find(search);
+	}
+
+	@Override
+	public ParameterDTO testWs(String key) {
+		return test.getParameter(key);
 	}
 
 }
