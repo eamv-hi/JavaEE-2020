@@ -1,11 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
-
-<h:head></h:head> 
-<body> 
-
-</body> 
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+<!--        xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" -->
+<h:head>
+    <title>Holdoversigt</title>
+</h:head>
+<h:body> <!-- https://www.primefaces.org/showcase/ui/data/datatable/basic.xhtml -->
+    <p:dataTable id="teamTable" var="team" value="#{dtTeamView.teams}">
+        <p:column headerText="Id">
+            <h:outputText value="#{team.teamId}" />
+        </p:column>
+        <p:column headerText="Holdnavn">
+            <h:outputText value="#{team.teamName}" />
+        </p:column>
+        <p:column headerText="Start dato">
+            <h:outputText value="#{team.startDate}" />
+        </p:column>
+        <p:column headerText="Slut dato">
+            <h:outputText value="#{team.endDate}" />
+        </p:column>
+        
+        <p:column headerText="Uddannelsesid">
+            <h:outputText value="#{team.educationId}" />
+        </p:column>
+    </p:dataTable>
+<h:form id="form">
+        <p:outputLabel for="teamName" value="Holdnavn: " />
+    
+<!-- https://www.primefaces.org/showcase/ui/input/calendar/calendar.xhtml ... Mask / date9 -->
+        <p:outputLabel for="startDate" value="Start Dato: " />
+        <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+        
+        <p:outputLabel for="endDate" value="Slut Dato: " />
+        <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+        
+<!-- https://www.primefaces.org/showcase/ui/input/listbox.xhtml -->
+        <p:outputLabel for="basic" value="Uddannelse:" />
+        <p:selectOneListbox id="basic" value="#{selectOneView.option}">
+        <!-- #TODO implementere forløkke -->
+            <f:selectItem itemLabel="Option 1" itemValue="1" />
+            <f:selectItem itemLabel="Option 2" itemValue="2" />
+            <f:selectItem itemLabel="Option 3" itemValue="3" />
+        </p:selectOneListbox>
+     
+    <p:commandButton value="Tilføj Hold" update="teamTable" action="#{dtTeamView.addTeam}" icon="pi pi-check" />
+</h:form>
+</h:body>
 </html>
