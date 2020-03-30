@@ -1,8 +1,10 @@
 package gruppe1.web;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -23,12 +25,18 @@ public class SchoolOverview implements Serializable {
 	private int postalNumber;
 	private String city;
 	private String phone;
+	private List<SchoolDTO> schools;
 	
 	@Inject
 	private SchoolBeanLocal school;
+
+	@PostConstruct
+	public void init() {
+		schools = school.getAll();
+	}
 	
     public List<SchoolDTO> getSchools() {
-    	return school.getAll();
+	return schools;
     }
     
     public void addSchool(SchoolDTO schoolDTO) {
