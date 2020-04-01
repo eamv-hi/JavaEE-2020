@@ -19,10 +19,10 @@ import gruppe1.ejbClient.entity.SchoolDTO;
 public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Resource
 	private SessionContext ctx;
-	
+
 	@Override
 	public SchoolDTO create(SchoolDTO schoolDTO) {
 		if (schoolDTO != null) {
@@ -36,8 +36,8 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 	@Override
 	public void update(SchoolDTO school) {
 		School entity = findSchool(school.getSchoolId());
-		
-		if (entity != null && school != null) {			
+
+		if (entity != null && school != null) {
 			em.persist(fromDTO(entity, school));
 		}
 	}
@@ -45,8 +45,8 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 	@Override
 	public void delete(int id) {
 		School entity = findSchool(id);
-		
-		if (entity != null) {			
+
+		if (entity != null) {
 			em.remove(entity);
 		}
 	}
@@ -60,22 +60,22 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 	@Override
 	public List<SchoolDTO> getAll() {
 		return em.createNamedQuery("getAllSchools", School.class)
-					.getResultList()
-					.stream()
-					.map(c -> c.toDTO())
-					.collect(Collectors.toList());
+				.getResultList()
+				.stream()
+				.map(c -> c.toDTO())
+				.collect(Collectors.toList());
 	}
-	
+
 	private School fromDTO(School school, SchoolDTO dto) {
 		school.setName(dto.getName());
 		school.setAddress(dto.getAddress());
 		school.setPostalNumber(dto.getPostalNumber());
 		school.setCity(dto.getCity());
 		school.setPhone(dto.getPhone());
-		
+
 		return school;
 	}
-	
+
 	private School findSchool(int id) {
 		return em.find(School.class, id);
 	}

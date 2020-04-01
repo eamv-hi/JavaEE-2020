@@ -7,6 +7,6 @@ import gruppe1.ejbClient.entity.CourseDTO;
 @Remote
 public interface CourseBeanRemote {
 	CourseDTO get(int id);
-	
+
 	List<CourseDTO> getAll();
 }

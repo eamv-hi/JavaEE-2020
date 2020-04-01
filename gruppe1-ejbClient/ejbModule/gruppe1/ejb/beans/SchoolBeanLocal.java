@@ -7,12 +7,12 @@ import gruppe1.ejbClient.entity.SchoolDTO;
 @Local
 public interface SchoolBeanLocal {
 	SchoolDTO create(SchoolDTO school);
-	
+
 	void update(SchoolDTO school);
-	
+
 	void delete(int id);
 
 	SchoolDTO get(int id);
-	
+
 	List<SchoolDTO> getAll();
 }

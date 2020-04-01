@@ -13,109 +13,110 @@
 </h:head>
 
 <h:body>
-	<p:growl id="msgs" showDetail="true" />
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" />
 
-	<p:dataTable id="schoolTable" var="school"
-		value="#{dtSchoolView.schools}" editable="true">
+		<p:dataTable id="schoolTable" var="school"
+			value="#{dtSchoolView.schools}" editable="true">
 
-		<p:ajax event="rowEdit" listener="#{dtSchoolView.onRowEdit}"
-			update=":msgs" />
+			<p:ajax event="rowEdit" listener="#{dtSchoolView.onRowEdit}"
+				update=":form:msgs" />
 
-		<p:column headerText="Id">
-			<h:outputText value="#{school.schoolId}" />
-		</p:column>
+			<p:column headerText="Id">
+				<h:outputText value="#{school.schoolId}" />
+			</p:column>
 
-		<p:column headerText="Navn">
-			<p:cellEditor>
-				<f:facet name="output">
-					<h:outputText value="#{school.name}" />
-				</f:facet>
-				<f:facet name="input" class="p-3">
-					<p:inputText value="#{school.name}" style="width:100%" label="Navn" />
-				</f:facet>
-			</p:cellEditor>
-		</p:column>
+			<p:column headerText="Navn">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{school.name}" />
+					</f:facet>
+					<f:facet name="input" class="p-3">
+						<p:inputText value="#{school.name}" style="width:100%" label="Navn" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
 
-		<p:column headerText="Adresse">
-			<p:cellEditor>
-				<f:facet name="output">
-					<h:outputText value="#{school.address}" />
-				</f:facet>
-				<f:facet name="input">
-					<p:inputText value="#{school.address}" style="width:100%"
-						label="Adresse" />
-				</f:facet>
-			</p:cellEditor>
-		</p:column>
+			<p:column headerText="Adresse">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{school.address}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{school.address}" style="width:100%"
+							label="Adresse" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
 
-		<p:column headerText="Postnummer">
-			<p:cellEditor>
-				<f:facet name="output">
-					<h:outputText value="#{school.postalNumber}" />
-				</f:facet>
-				<f:facet name="input">
-					<p:inputText value="#{school.postalNumber}" style="width:100%"
-						label="Postnummer" />
-				</f:facet>
-			</p:cellEditor>
-		</p:column>
+			<p:column headerText="Postnummer">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{school.postalNumber}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{school.postalNumber}" style="width:100%"
+							label="Postnummer" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
 
-		<p:column headerText="By">
-			<p:cellEditor>
-				<f:facet name="output">
-					<h:outputText value="#{school.city}" />
-				</f:facet>
-				<f:facet name="input">
-					<p:inputText value="#{school.city}" style="width:100%" label="By" />
-				</f:facet>
-			</p:cellEditor>
-		</p:column>
+			<p:column headerText="By">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{school.city}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{school.city}" style="width:100%" label="By" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
 
-		<p:column headerText="Telefon">
-			<p:cellEditor>
-				<f:facet name="output">
-					<h:outputText value="#{school.phone}" />
-				</f:facet>
-				<f:facet name="input">
-					<p:inputText value="#{school.phone}" style="width:100%"
-						label="Telefon" />
-				</f:facet>
-			</p:cellEditor>
-		</p:column>
+			<p:column headerText="Telefon">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{school.phone}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{school.phone}" style="width:100%"
+							label="Telefon" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
 
-		<p:column style="width:35px">
-			<p:rowEditor class="text-center" />
-		</p:column>
-	</p:dataTable>
+			<p:column style="width:35px">
+				<p:rowEditor class="text-center" />
+			</p:column>
+		</p:dataTable>
 
-
+	</h:form>
 	<h:form style="margin-top: 30px">
 		<span class="ui-float-label" style="display: block"> <p:inputText
-				id="float-input1" value="#{dtSchoolView.name}" /> <p:outputLabel
+				id="float-input1" value="#{dtSchoolView.forCreate.name}" /> <p:outputLabel
 				for="@previous" value="Navn" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input2" value="#{dtSchoolView.address}" /> <p:outputLabel
+			<p:inputText id="float-input2" value="#{dtSchoolView.forCreate.address}" /> <p:outputLabel
 				for="@previous" value="Adresse" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input3" value="#{dtSchoolView.postalNumber}" />
+			<p:inputText id="float-input3" value="#{dtSchoolView.forCreate.postalNumber}" />
 			<p:outputLabel for="@previous" value="Postnummer" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input4" value="#{dtSchoolView.city}" /> <p:outputLabel
+			<p:inputText id="float-input4" value="#{dtSchoolView.forCreate.city}" /> <p:outputLabel
 				for="@previous" value="By" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input5" value="#{dtSchoolView.phone}" /> <p:outputLabel
+			<p:inputText id="float-input5" value="#{dtSchoolView.forCreate.phone}" /> <p:outputLabel
 				for="@previous" value="Telefonnr." />
 		</span>
 
-		<p:commandButton value="Tilføj skole" update="schoolTable"
+		<p:commandButton value="Tilføj skole" update=":form:schoolTable"
 			action="#{dtSchoolView.addSchool}" style="margin-top: 5px" />
 	</h:form>
 </h:body>
