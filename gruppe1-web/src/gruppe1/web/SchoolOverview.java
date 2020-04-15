@@ -16,7 +16,7 @@ import org.primefaces.event.RowEditEvent;
 import gruppe1.ejb.beans.SchoolBeanLocal;
 import gruppe1.ejbClient.entity.SchoolDTO;
 
-@Named("dtSchoolView")
+@Named("dtSchoolOverviewView")
 @RequestScoped
 public class SchoolOverview implements Serializable {
 	private static final long serialVersionUID = 1L;

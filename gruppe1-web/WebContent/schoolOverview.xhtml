@@ -9,6 +9,8 @@
 
 <h:head>
 	<title>Skoleoversigt</title>
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 
@@ -17,9 +19,9 @@
 		<p:growl id="msgs" showDetail="true" />
 
 		<p:dataTable id="schoolTable" var="school"
-			value="#{dtSchoolView.schools}" editable="true">
+			value="#{dtSchoolOverviewView.schools}" editable="true">
 
-			<p:ajax event="rowEdit" listener="#{dtSchoolView.onRowEdit}"
+			<p:ajax event="rowEdit" listener="#{dtSchoolOverviewView.onRowEdit}"
 				update=":form:msgs" />
 
 			<p:column headerText="Id">
@@ -32,7 +34,8 @@
 						<h:outputText value="#{school.name}" />
 					</f:facet>
 					<f:facet name="input" class="p-3">
-						<p:inputText value="#{school.name}" class="inTableInput" label="Navn" />
+						<p:inputText value="#{school.name}" class="inTableInput"
+							label="Navn" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -67,7 +70,8 @@
 						<h:outputText value="#{school.city}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText value="#{school.city}" class="inTableInput" label="By" />
+						<p:inputText value="#{school.city}" class="inTableInput"
+							label="By" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -87,37 +91,46 @@
 			<p:column style="width:35px">
 				<p:rowEditor class="text-center" />
 			</p:column>
+
+			<p:column style="width:45px">
+				<p:linkButton outcome="school" icon="pi pi-eye" title="Se skole">
+					<f:param name="schoolId" value="#{school.schoolId}" />
+				</p:linkButton>
+			</p:column>
 		</p:dataTable>
 
 	</h:form>
 	<h:form style="margin-top: 30px">
 		<span class="ui-float-label" style="display: block"> <p:inputText
-				id="float-input1" value="#{dtSchoolView.forCreate.name}" /> <p:outputLabel
+				id="float-input1" value="#{dtSchoolOverviewView.forCreate.name}" /> <p:outputLabel
 				for="@previous" value="Navn" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input2" value="#{dtSchoolView.forCreate.address}" /> <p:outputLabel
+			<p:inputText id="float-input2"
+				value="#{dtSchoolOverviewView.forCreate.address}" /> <p:outputLabel
 				for="@previous" value="Adresse" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input3" value="#{dtSchoolView.forCreate.postalNumber}" />
-			<p:outputLabel for="@previous" value="Postnummer" />
+			<p:inputText id="float-input3"
+				value="#{dtSchoolOverviewView.forCreate.postalNumber}" /> <p:outputLabel
+				for="@previous" value="Postnummer" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input4" value="#{dtSchoolView.forCreate.city}" /> <p:outputLabel
-				for="@previous" value="By" />
+			<p:inputText id="float-input4" value="#{dtSchoolOverviewView.forCreate.city}" />
+			<p:outputLabel for="@previous" value="By" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input5" value="#{dtSchoolView.forCreate.phone}" /> <p:outputLabel
+			<p:inputText id="float-input5"
+				value="#{dtSchoolOverviewView.forCreate.phone}" /> <p:outputLabel
 				for="@previous" value="Telefonnr." />
 		</span>
 
 		<p:commandButton value="Tilføj skole" update=":form:schoolTable"
-			action="#{dtSchoolView.addSchool}" style="margin-top: 5px" />
+			action="#{dtSchoolOverviewView.addSchool}" style="margin-top: 5px" />
 	</h:form>
 </h:body>
 
