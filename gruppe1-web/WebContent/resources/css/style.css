@@ -10,6 +10,9 @@
 	text-align: center;
 }
 
-.p-3 {
-	padding: 3px;
+.ui-inputfield.inTableInput {
+	margin: 3px 2px;
+	box-sizing: border-box;
+	width: -webkit-fill-available;
+	width: -moz-available;
 }
