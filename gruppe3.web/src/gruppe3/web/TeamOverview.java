@@ -20,6 +20,7 @@ public class TeamOverview {
 	private Date startDate;
 	private Date endDate;
 	private int educationId;
+	private String option;
 	
 	public String getTeamName() { return teamName; }
 	public void setTeamName(String teamName) { this.teamName = teamName; }
@@ -29,6 +30,11 @@ public class TeamOverview {
 	public void setEndDate(Date endDate) { this.endDate = endDate; }
 	public int getEducationId() { return educationId; }
 	public void setEducationId(int educationId) { this.educationId = educationId; }
+	public String getOption() { return option;}
+	public void setOption(String option) {
+		this.option = option;
+		educationId = Integer.parseInt(option);
+	}
 	
 	@Inject
 	private TeamBeanLocal team;
