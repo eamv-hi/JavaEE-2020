@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import gruppe1.ejbClient.entity.CourseDTO;
 import gruppe1.ejbClient.entity.EducationDTO;
 
 @Entity
@@ -91,7 +92,13 @@ public class Education implements Serializable {
 		educationDTO.setNumberOfSemesters(numberOfSemesters);
 		educationDTO.setLessonsPrWeek(lessonsPrWeek);
 		educationDTO.setEcts(ects);
-
+		
+		List<CourseDTO> tempCourses = new ArrayList<>();
+		if (courses != null ) {
+			courses.forEach((n) -> tempCourses.add(n.toDTO()));		
+		}
+		
+		educationDTO.setCourseDTO(tempCourses);
 		return educationDTO;
 	}
 

@@ -12,7 +12,7 @@ import javax.persistence.NamedQuery;
 import gruppe1.ejbClient.entity.CourseDTO;
 
 @Entity
-@NamedQuery(name = "getAllCourses", query = "SELECT c FROM Course c")
+@NamedQuery(name = "getAllCourses", query = "SELECT c FROM Course c JOIN c.education e")
 
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -52,7 +52,11 @@ public class Course implements Serializable {
 		courseDTO.setCourseId(courseId);
 		courseDTO.setName(name);
 		courseDTO.setTeacherName(teacherName);
-
+		if (education != null) {
+			courseDTO.setEducationDTO(education.toDTO());
+		}
+		
+		
 		return courseDTO;
 	}
 

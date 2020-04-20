@@ -1,5 +1,8 @@
 package gruppe1.ejbClient.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EducationDTO {
 	private int educationId;
 	private String name;
@@ -7,6 +10,7 @@ public class EducationDTO {
 	private int numberOfSemesters;
 	private int lessonsPrWeek;
 	private int ects;
+	private List<CourseDTO> courseDTOs = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -54,5 +58,13 @@ public class EducationDTO {
 
 	public void setEducationId(int educationId) {
 		this.educationId = educationId;
+	}
+	
+	public List<CourseDTO> getCourseDTOs() {
+		return courseDTOs;
+	}
+
+	public void setCourseDTO(List<CourseDTO> courseDTOs) {
+		this.courseDTOs = courseDTOs;
 	}
 }

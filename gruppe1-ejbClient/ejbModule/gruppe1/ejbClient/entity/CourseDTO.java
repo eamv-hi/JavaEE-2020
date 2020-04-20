@@ -4,6 +4,7 @@ public class CourseDTO {
 	private int courseId;
 	private String name;
 	private String teacherName;
+	private EducationDTO educationDTO;
 
 	public String getName() {
 		return name;
@@ -27,5 +28,13 @@ public class CourseDTO {
 
 	public void setCourseId(int courseId) {
 		this.courseId = courseId;
+	}
+	
+	public EducationDTO getEducationDTO() {
+		return educationDTO;
+	}
+
+	public void setEducationDTO(EducationDTO educationDTO) {
+		this.educationDTO = educationDTO;
 	}
 }
