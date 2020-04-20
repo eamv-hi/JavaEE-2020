@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/html">
 
 <f:loadBundle basename="resources" var="msg" />
 <head>
@@ -17,7 +18,6 @@ body {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 18px;
 }
-
 
 .bottom {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -49,10 +49,31 @@ body {
 						cellpadding="0" cellspacing="0" border="0">
 						<tbody>
 
-							<td align="center" width="100px" valign="middle"></td>
-							
+							<!-- 							<td align="center" width="100px" valign="middle"></td> -->
+
 							<!--  <ui:insert name="body">Page Body</ui:insert>-->
-							<table border="" cellspacing="0">
+							<p:dataTable var="underviser" value="#{ETELLERANDET.teachers}">
+								<p:column headerText="Fornavn">
+									<h:outputText value="#{teacher.firstName}" />
+								</p:column>
+
+								<p:column headerText="Efternavn">
+									<h:outputText value="#{teacher.lastName}" />
+								</p:column>
+
+								<p:column headerText="Email">
+									<h:outputText value="#{teacher.email}" />
+								</p:column>
+
+								<p:column headerText="Telefon">
+									<h:outputText value="#{teacher.phoneNo}" />
+								</p:column>
+
+								<p:column headerText="Rolle">
+									<h:outputText value="#{teacher.role}" />
+								</p:column>
+							</p:dataTable>
+							<!-- <table border="" cellspacing="0">
 								<tbody>
 									<tr bgcolor="#CAD6E0">
 										<td>Firstname</td>
@@ -64,15 +85,15 @@ body {
 									<ui:repeat var="#{teacherLogic.teachers()}" value="Teacher">
 										<tr>
 											<td nowrap="nowrap">{#Teacher.name}</td>
-											<td nowrap="nowrap">Test Efternavn<!-- Teacher Efternavn --></td>
-											<td nowrap="nowrap">Test Telefon<!-- Teacher Telefon --></td>
-											<td nowrap="nowrap">Test Email<!-- Teacher Email --></td>
-											<td nowrap="nowrap">Test Rolle<!-- Teacher Rolle --></td>
+											<td nowrap="nowrap">Test EfternavnTeacher Efternavn</td>
+											<td nowrap="nowrap">Test TelefonTeacher Telefon</td>
+											<td nowrap="nowrap">Test EmailTeacher Email</td>
+											<td nowrap="nowrap">Test RolleTeacher Rolle</td>
 										</tr>
 										<h:commandButton value="Teacher" />
 									</ui:repeat>
 								</tbody>
-							</table>
+							</table> -->
 						</tbody>
 					</table>
 				</td>
@@ -83,6 +104,23 @@ body {
 			</tr>
 		</tbody>
 	</table>
+	<h2>Opret ny underviser</h2>
+	<label>Fornavn</label>
+	<h:inputtext id="firstName"></h:inputtext>
+	<br></br>
+	<label>Efternavn</label>
+	<h:inputtext id="lastName"></h:inputtext>
+	<br></br>
+	<label>Telefon</label>
+	<h:inputtext id="phoneNo"></h:inputtext>
+	<br></br>
+	<label>Email</label>
+	<h:inputtext id="email"></h:inputtext>
+	<br></br>
+	<label>Rolle</label>
+	<h:inputtext id="role"></h:inputtext>
+	<br></br>
+	<h:commandbutton action="#{teacherLogic.saveTeacher()}">Opret Underviser</h:commandbutton>
 </body>
 
 </html>
