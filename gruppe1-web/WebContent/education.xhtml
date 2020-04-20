@@ -15,6 +15,7 @@
 	<h:outputStylesheet library="css" name="style.css" />
 	<f:metadata>
 		<f:viewParam name="educationId" value="#{dtEducationView.educationId}" />
+		<f:viewAction action="#{dtEducationView.init}"/>
 	</f:metadata>
 </h:head>
 
@@ -48,6 +49,72 @@
 		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Ects point:</h4>
 		<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.ects}</p>
 	</div>
+
+
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="courseTable" var="course"
+			value="#{dtEducationView.education.courseDTOs}" editable="true">
+
+			<p:ajax event="rowEdit" listener="#{dtEducationView.onRowEdit}"
+				update=":form:msgs" />
+
+			<p:column headerText="Id">
+				<h:outputText value="#{course.courseId}" />
+			</p:column>
+
+			<p:column headerText="Fag">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{course.name}" />
+					</f:facet>
+					<f:facet name="input" class="p-3">
+						<p:inputText value="#{course.name}" class="inTableInput"
+							label="Fag" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Lærer">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{course.teacherName}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{course.teacherName}" class="inTableInput"
+							label="Lærer" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:35px">
+				<p:rowEditor class="text-center" />
+			</p:column>
+
+			<p:column style="width:45px">
+				<p:linkButton outcome="course" icon="pi pi-eye" title="Se fag">
+					<f:param name="courseId" value="#{course.courseId}" />
+				</p:linkButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	<h:form style="margin-top: 30px">
+		<span class="ui-float-label" style="display: block"> <p:inputText
+				id="float-input1" value="#{dtEducationView.forCreate.name}" /> <p:outputLabel
+				for="@previous" value="Lærer" />
+		</span>
+
+		<span class="ui-float-label" style="display: block; margin-top: 20px">
+			<p:inputText id="float-input2"
+				value="#{dtEducationView.forCreate.teacherName}" /> <p:outputLabel
+				for="@previous" value="Fag" />
+		</span>
+
+		<p:commandButton value="Tilføj fag" update=":form:courseTable"
+			action="#{dtEducationView.addCourse}" style="margin-top: 5px" />
+	</h:form>
 
 	<h:form>
 		<p:commandButton value="Slet uddannelse" action="#{dtEducationView.delete}">

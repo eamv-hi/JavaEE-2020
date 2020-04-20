@@ -46,6 +46,10 @@ public class Education implements Serializable {
 		this.school = school;
 	}
 
+	public void setEducationId(int educationId) {
+		this.educationId = educationId;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -99,6 +103,10 @@ public class Education implements Serializable {
 	}
 
 	public EducationDTO toDTO() {
+		return toDTO(null);
+	}
+
+	public EducationDTO toDTO(CourseDTO courseDTO) {
 		EducationDTO educationDTO = new EducationDTO();
 
 		educationDTO.setEducationId(educationId);
@@ -108,14 +116,29 @@ public class Education implements Serializable {
 		educationDTO.setLessonsPrWeek(lessonsPrWeek);
 		educationDTO.setEcts(ects);
 
-		List<CourseDTO> tempCourses = new ArrayList<>();
 		if (courses != null) {
-			courses.forEach((n) -> tempCourses.add(n.toDTO()));
+			List<CourseDTO> coursesDTO = educationDTO.getCourseDTOs();
+			courses.forEach((c) -> {
+				if (courseDTO != null && c.getCourseId() == courseDTO.getCourseId()) {
+					coursesDTO.add(courseDTO);
+				} else {
+					coursesDTO.add(c.toDTO(educationDTO));
+				}
+			});
 		}
 
-		educationDTO.setCourseDTO(tempCourses);
-
 		return educationDTO;
+	}
+
+	public static Education fromDTO(Education education, EducationDTO dto) {
+		education.setEducationId(dto.getEducationId());
+		education.setName(dto.getName());
+		education.setLengthOfSemesters(dto.getLengthOfSemesters());
+		education.setNumberOfSemesters(dto.getNumberOfSemesters());
+		education.setLessonsPrWeek(dto.getLessonsPrWeek());
+		education.setEcts(dto.getEcts());
+
+		return education;
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import gruppe1.ejb.entity.Course;
+import gruppe1.ejb.entity.Education;
 import gruppe1.ejbClient.entity.CourseDTO;
 
 @Stateless
@@ -66,6 +67,7 @@ public class CourseBean implements CourseBeanRemote, CourseBeanLocal {
 	private Course fromDTO(Course course, CourseDTO dto) {
 		course.setName(dto.getName());
 		course.setTeacherName(dto.getTeacherName());
+		course.setEducation(Education.fromDTO(new Education(), dto.getEducationDTO()));
 
 		return course;
 	}

@@ -24,7 +24,7 @@ public class EducationBean implements EducationBeanRemote, EducationBeanLocal {
 	@Override
 	public EducationDTO create(EducationDTO educationDTO) {
 		if (educationDTO != null) {
-			Education education = fromDTO(new Education(), educationDTO);
+			Education education = Education.fromDTO(new Education(), educationDTO);
 			//FIXME Id er pt hardcodet
 			School school = new School();
 			school.setSchoolId(1);
@@ -40,7 +40,7 @@ public class EducationBean implements EducationBeanRemote, EducationBeanLocal {
 		Education entity = findEducation(education.getEducationId());
 
 		if (entity != null && education != null) {
-			em.persist(fromDTO(entity, education));
+			em.persist(Education.fromDTO(entity, education));
 		}
 	}
 
@@ -66,16 +66,6 @@ public class EducationBean implements EducationBeanRemote, EducationBeanLocal {
 				.stream()
 				.map(c -> c.toDTO())
 				.collect(Collectors.toList());
-	}
-
-	private Education fromDTO(Education education, EducationDTO dto) {
-		education.setName(dto.getName());
-		education.setLengthOfSemesters(dto.getLengthOfSemesters());
-		education.setNumberOfSemesters(dto.getNumberOfSemesters());
-		education.setLessonsPrWeek(dto.getLessonsPrWeek());
-		education.setEcts(dto.getEcts());
-
-		return education;
 	}
 
 	private Education findEducation(int id) {
