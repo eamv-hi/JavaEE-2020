@@ -4,10 +4,4 @@
   <module>
     <ejb>gruppe2.ejb.jar</ejb>
   </module>
-  <module>
-    <web>
-      <web-uri>gruppe2a.web.war</web-uri>
-      <context-root>gruppe2a.web</context-root>
-    </web>
-  </module>
 </application>
