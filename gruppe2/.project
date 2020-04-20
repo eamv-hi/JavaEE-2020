@@ -5,6 +5,7 @@
 	<projects>
 		<project>gruppe2.ejb</project>
 		<project>gruppe2.ejbClient</project>
+		<project>gruppe2.web2</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
