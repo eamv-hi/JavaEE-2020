@@ -45,7 +45,7 @@
             <f:selectItem itemLabel="Option 3" itemValue="3" />
         	<!--<f:selectItems value="#{TeamOverview.options}"  itemLabel="#{EducationDTO.name}" itemValue="#{EducationDTO.educationId}" /> -->
         </p:selectOneListbox>
-    <p:commandButton value="Tilføj Hold" update="teamTable" action="#{dtTeamView.addTeam}" icon="pi pi-check" />
+    <p:commandButton value="Tilføj Hold" update=":form:teamTable" actionListener="#{dtTeamView.addTeam}" icon="pi pi-check" />
 </h:form>
 </h:body>
 </html>

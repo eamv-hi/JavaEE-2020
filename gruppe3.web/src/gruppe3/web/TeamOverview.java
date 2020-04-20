@@ -1,5 +1,6 @@
 package gruppe3.web;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import gruppe3.ejbClient.beans.TeamBeanLocal;
 
 @Named("dtTeamView")
 @RequestScoped
-public class TeamOverview {
+public class TeamOverview implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private int teamId;
@@ -42,6 +43,10 @@ public class TeamOverview {
 	public List<TeamDTO> getTeams() {
 		return team.getAll();
 	}
+	
+//	public void addTeam(TeamDTO teamDTO) {
+//		team.Create(teamDTO);
+//	}
 	
 	public void addTeam() {
 		TeamDTO teamDTO = new TeamDTO();

@@ -10,7 +10,7 @@ import gruppe3.ejbClient.DTO.TeamDTO;
  *
  */
 @Entity
-
+@NamedQuery(name = "getAllTeams", query = "SELECT t FROM Team t")
 public class Team implements Serializable {
 
 	
