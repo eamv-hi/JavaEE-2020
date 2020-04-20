@@ -3,8 +3,10 @@ package gruppe1.ejb.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 import gruppe1.ejbClient.entity.CourseDTO;
@@ -21,6 +23,8 @@ public class Course implements Serializable {
 	private String name;
 	// mulighed for at koble sammen med gruppe 2, maybe?
 	private String teacherName;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Education education;
 
 	public String getName() {
 		return name;

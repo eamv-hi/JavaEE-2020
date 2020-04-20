@@ -21,10 +21,13 @@ public class CourseBean implements CourseBeanRemote, CourseBeanLocal {
 	private SessionContext ctx;
 
 	@Override
-	public void create(CourseDTO course) {
-		if (course != null) {
-			em.persist(fromDTO(new Course(), course));
+	public CourseDTO create(CourseDTO courseDTO) {
+		if (courseDTO != null) {
+			Course course = fromDTO(new Course(), courseDTO);
+			em.persist(course);
+			return course.toDTO();
 		}
+		return null;
 	}
 
 	@Override
