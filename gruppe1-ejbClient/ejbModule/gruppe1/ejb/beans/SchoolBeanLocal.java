@@ -2,6 +2,8 @@ package gruppe1.ejb.beans;
 
 import java.util.List;
 import javax.ejb.Local;
+
+import gruppe1.ejbClient.entity.EducationDTO;
 import gruppe1.ejbClient.entity.SchoolDTO;
 
 @Local
@@ -15,4 +17,6 @@ public interface SchoolBeanLocal {
 	SchoolDTO get(int id);
 
 	List<SchoolDTO> getAll();
+
+	List<EducationDTO> getAllEducations(int id);
 }

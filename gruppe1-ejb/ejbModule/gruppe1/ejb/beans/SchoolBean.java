@@ -8,7 +8,10 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import gruppe1.ejb.entity.Education;
 import gruppe1.ejb.entity.School;
+import gruppe1.ejbClient.entity.EducationDTO;
 import gruppe1.ejbClient.entity.SchoolDTO;
 
 /**
@@ -60,6 +63,16 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 	@Override
 	public List<SchoolDTO> getAll() {
 		return em.createNamedQuery("getAllSchools", School.class)
+				.getResultList()
+				.stream()
+				.map(c -> c.toDTO())
+				.collect(Collectors.toList());
+	}
+	
+	@Override
+	public List<EducationDTO> getAllEducations(int id) {
+		return em.createNamedQuery("getAllEducationsWhitSchoolId", Education.class)
+				.setParameter("schoolId", id)
 				.getResultList()
 				.stream()
 				.map(c -> c.toDTO())

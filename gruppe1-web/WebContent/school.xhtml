@@ -12,7 +12,7 @@
 
 	<h:outputStylesheet name="primeicons/primeicons.css"
 		library="primefaces" />
-
+	<h:outputStylesheet library="css" name="style.css" />
 	<f:metadata>
 		<f:viewParam name="schoolId" value="#{dtSchoolView.schoolId}" />
 	</f:metadata>
@@ -50,9 +50,9 @@
 	</div>
 
 	<h:form>
-		<p:commandButton value="Slet skole"
-			action="#{dtSchoolView.delete}">
-			<p:confirm header="Bekræft" message='Er du sikker på, at du vil slette "#{dtSchoolView.school.name}"?'
+		<p:commandButton value="Slet skole" action="#{dtSchoolView.delete}">
+			<p:confirm header="Bekræft"
+				message='Er du sikker på, at du vil slette "#{dtSchoolView.school.name}"?'
 				icon="pi pi-exclamation-triangle" />
 		</p:commandButton>
 
@@ -63,5 +63,130 @@
 				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
 		</p:confirmDialog>
 	</h:form>
+
+
+
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="educationTable" var="education"
+			value="#{dtSchoolView.educations}" editable="true">
+
+			<p:ajax event="rowEdit"
+				listener="#{dtSchoolView.onRowEdit}" update=":form:msgs" />
+
+			<p:column headerText="Id">
+				<h:outputText value="#{education.educationId}" />
+			</p:column>
+
+			<p:column headerText="Navn">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{education.name}" />
+					</f:facet>
+					<f:facet name="input" class="p-3">
+						<p:inputText value="#{education.name}" class="inTableInput"
+							label="Navn" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Semesterlængde">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{education.lengthOfSemesters}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{education.lengthOfSemesters}"
+							class="inTableInput" label="Semesterlængde" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Antal semestre">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{education.numberOfSemesters}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{education.numberOfSemesters}"
+							class="inTableInput" label="Antal semestre" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Antal undervisningstimer">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{education.lessonsPrWeek}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{education.lessonsPrWeek}"
+							class="inTableInput" label="Antal undervisningstimer" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Ects point">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{education.ects}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{education.ects}" class="inTableInput"
+							label="Ects point" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:35px">
+				<p:rowEditor class="text-center" />
+			</p:column>
+
+			<p:column style="width:45px">
+				<p:linkButton outcome="education" icon="pi pi-eye"
+					title="Se uddannelse">
+					<f:param name="educationId" value="#{education.educationId}" />
+				</p:linkButton>
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+	<h:form style="margin-top: 30px">
+		<span class="ui-float-label" style="display: block"> <p:inputText
+				id="float-input1" value="#{dtSchoolView.forCreate.name}" />
+			<p:outputLabel for="@previous" value="Navn" />
+		</span>
+
+		<span class="ui-float-label" style="display: block; margin-top: 20px">
+			<p:inputText id="float-input2"
+				value="#{dtSchoolView.forCreate.lengthOfSemesters}" /> <p:outputLabel
+				for="@previous" value="Semesterlængde" />
+		</span>
+
+		<span class="ui-float-label" style="display: block; margin-top: 20px">
+			<p:inputText id="float-input3"
+				value="#{dtSchoolView.forCreate.numberOfSemesters}" /> <p:outputLabel
+				for="@previous" value="Antal semestre" />
+		</span>
+
+		<span class="ui-float-label" style="display: block; margin-top: 20px">
+			<p:inputText id="float-input4"
+				value="#{dtSchoolView.forCreate.lessonsPrWeek}" /> <p:outputLabel
+				for="@previous" value="Antal undervisningstimer" />
+		</span>
+
+		<span class="ui-float-label" style="display: block; margin-top: 20px">
+			<p:inputText id="float-input5"
+				value="#{dtSchoolView.forCreate.ects}" /> <p:outputLabel
+				for="@previous" value="Ects point" />
+		</span>
+
+		<p:commandButton value="Tilføj uddannelse"
+			update=":form:educationTable"
+			action="#{dtSchoolView.addEducation}"
+			style="margin-top: 5px" />
+	</h:form>
+
 </h:body>
 </html>

@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import gruppe1.ejb.entity.Education;
+import gruppe1.ejb.entity.School;
 import gruppe1.ejbClient.entity.EducationDTO;
 
 @Stateless
@@ -21,10 +22,17 @@ public class EducationBean implements EducationBeanRemote, EducationBeanLocal {
 	private SessionContext ctx;
 
 	@Override
-	public void create(EducationDTO education) {
-		if (education != null) {
-			em.persist(fromDTO(new Education(), education));
+	public EducationDTO create(EducationDTO educationDTO) {
+		if (educationDTO != null) {
+			Education education = fromDTO(new Education(), educationDTO);
+			//FIXME Id er pt hardcodet
+			School school = new School();
+			school.setSchoolId(1);
+			education.setSchool(school);
+			em.persist(education);
+			return education.toDTO();
 		}
+		return null;
 	}
 
 	@Override

@@ -6,8 +6,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -16,6 +18,7 @@ import gruppe1.ejbClient.entity.EducationDTO;
 
 @Entity
 @NamedQuery(name = "getAllEducations", query = "SELECT e FROM Education e")
+@NamedQuery(name = "getAllEducationsWhitSchoolId", query = "SELECT e FROM Education e WHERE e.school.schoolId=:schoolId")
 
 public class Education implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -28,8 +31,20 @@ public class Education implements Serializable {
 	private int numberOfSemesters;
 	private int lessonsPrWeek;
 	private int ects;
+
 	@OneToMany(mappedBy = "education", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Course> courses = new ArrayList<>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private School school;
+
+	public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school) {
+		this.school = school;
+	}
 
 	public String getName() {
 		return name;
@@ -92,13 +107,14 @@ public class Education implements Serializable {
 		educationDTO.setNumberOfSemesters(numberOfSemesters);
 		educationDTO.setLessonsPrWeek(lessonsPrWeek);
 		educationDTO.setEcts(ects);
-		
+
 		List<CourseDTO> tempCourses = new ArrayList<>();
-		if (courses != null ) {
-			courses.forEach((n) -> tempCourses.add(n.toDTO()));		
+		if (courses != null) {
+			courses.forEach((n) -> tempCourses.add(n.toDTO()));
 		}
-		
+
 		educationDTO.setCourseDTO(tempCourses);
+
 		return educationDTO;
 	}
 

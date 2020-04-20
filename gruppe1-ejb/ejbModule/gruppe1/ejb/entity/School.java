@@ -1,11 +1,15 @@
 package gruppe1.ejb.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import gruppe1.ejbClient.entity.SchoolDTO;
 
@@ -23,6 +27,13 @@ public class School implements Serializable {
 	private int postalNumber;
 	private String city;
 	private String phone;
+	
+    @OneToMany(
+            mappedBy = "school",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+        )
+	private List<Education> education = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -66,6 +77,10 @@ public class School implements Serializable {
 
 	public int getSchoolId() {
 		return schoolId;
+	}
+	
+	public void setSchoolId(int schoolId) {
+		this.schoolId = schoolId;
 	}
 
 	public SchoolDTO toDTO() {
