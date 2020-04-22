@@ -4,4 +4,4 @@
 build/
 bin/
 target/
-
+!/.s2i/*

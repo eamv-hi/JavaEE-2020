@@ -18,7 +18,6 @@ import gruppe1.ejbClient.entity.SchoolDTO;
  * Session Bean implementation class SchoolBean
  */
 @Stateless
-@LocalBean
 public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 	@PersistenceContext
 	private EntityManager em;
