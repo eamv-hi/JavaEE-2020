@@ -28,18 +28,18 @@
     </p:dataTable>
 <h:form id="form">
         <p:outputLabel for="teamName" value="Holdnavn: " />
-        <p:inputText id="teamName"></p:inputText>
+        <p:inputText id="teamName" value="#{dtTeamView.teamName}"></p:inputText>
     
 <!-- https://www.primefaces.org/showcase/ui/input/calendar/calendar.xhtml ... Mask / date9 -->
         <p:outputLabel for="startDate" value="Start Dato: " />
-        <p:calendar id="startDate" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+        <p:calendar id="startDate" value="#{dtTeamView.startDate}" pattern="dd-MM-yyyy" mask="true" />
         
         <p:outputLabel for="endDate" value="Slut Dato: " />
-        <p:calendar id="endDate" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+        <p:calendar id="endDate" value="#{dtTeamView.endDate}" pattern="dd-MM-yyyy" mask="true" />
         
 <!-- https://www.primefaces.org/showcase/ui/input/listbox.xhtml -->
         <p:outputLabel for="basic" value="Uddannelse:" />
-        <p:selectOneListbox id="basic" value="#{teamOverview.option}">
+        <p:selectOneListbox id="basic" value="#{dtTeamView.educationId}">
         <!-- #TODO implementere forløkke -->
             <f:selectItem itemLabel="Option 1" itemValue="1" />
             <f:selectItem itemLabel="Option 2" itemValue="2" />
