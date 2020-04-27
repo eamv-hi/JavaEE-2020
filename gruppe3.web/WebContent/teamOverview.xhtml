@@ -28,13 +28,14 @@
     </p:dataTable>
 <h:form id="form">
         <p:outputLabel for="teamName" value="Holdnavn: " />
+        <p:inputText id="teamName"></p:inputText>
     
 <!-- https://www.primefaces.org/showcase/ui/input/calendar/calendar.xhtml ... Mask / date9 -->
         <p:outputLabel for="startDate" value="Start Dato: " />
-        <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+        <p:calendar id="startDate" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
         
         <p:outputLabel for="endDate" value="Slut Dato: " />
-        <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
+        <p:calendar id="endDate" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />
         
 <!-- https://www.primefaces.org/showcase/ui/input/listbox.xhtml -->
         <p:outputLabel for="basic" value="Uddannelse:" />
@@ -45,7 +46,7 @@
             <f:selectItem itemLabel="Option 3" itemValue="3" />
         	<!--<f:selectItems value="#{TeamOverview.options}"  itemLabel="#{EducationDTO.name}" itemValue="#{EducationDTO.educationId}" /> -->
         </p:selectOneListbox>
-    <p:commandButton value="Tilføj Hold" update=":form:teamTable" actionListener="#{dtTeamView.addTeam}" icon="pi pi-check" />
+    <p:commandButton value="Tilføj Hold" update=":teamTable" actionListener="#{dtTeamView.addTeam}" icon="pi pi-check" />
 </h:form>
 </h:body>
 </html>
