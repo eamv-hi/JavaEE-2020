@@ -1,6 +1,7 @@
 package gruppe3.web;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -18,17 +19,17 @@ public class TeamOverview implements Serializable {
 	
 	private int teamId;
 	private String teamName;
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	private int educationId;
 	private String option;
 	
 	public String getTeamName() { return teamName; }
 	public void setTeamName(String teamName) { this.teamName = teamName; }
-	public Date getStartDate() { return startDate; }
-	public void setStartDate(Date startDate) { this.startDate = startDate; }
-	public Date getEndDate() { return endDate; }
-	public void setEndDate(Date endDate) { this.endDate = endDate; }
+	public LocalDate getStartDate() { return startDate; }
+	public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
+	public LocalDate getEndDate() { return endDate; }
+	public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
 	public int getEducationId() { return educationId; }
 	public void setEducationId(int educationId) { this.educationId = educationId; }
 	public String getOption() { return option;}

@@ -1,6 +1,7 @@
 package gruppe3.ejb.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.*;
 import gruppe3.ejbClient.DTO.TeamDTO;
@@ -20,16 +21,16 @@ public class Team implements Serializable {
 	@GeneratedValue
 	private int teamId;
 	private String teamName;
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	private int educationId;
 	
 	public String getTeamName() { return teamName; }
 	public void setTeamName(String teamName) { this.teamName = teamName; }
-	public Date getStartDate() { return startDate; }
-	public void setStartDate(Date startDate) { this.startDate = startDate; }
-	public Date getEndDate() { return endDate; }
-	public void setEndDate(Date endDate) { this.endDate = endDate; }
+	public LocalDate getStartDate() { return startDate; }
+	public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
+	public LocalDate getEndDate() { return endDate; }
+	public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
 	public int getEducationId() { return educationId; }
 	public void setEducationId(int educationId) { this.educationId = educationId; }
 	
