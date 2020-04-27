@@ -40,7 +40,7 @@
 			<groupId>eamv.dmu18he</groupId>
 			<artifactId>gruppe1-ejbClient</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<type>ejb-client</type>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax</groupId>

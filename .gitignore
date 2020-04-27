@@ -1,7 +1,8 @@
 /gruppe1-*/.classpath
 /gruppe1-*/.project
 /gruppe1-*/.gitignore
+/gruppe1-*/.settings
 build/
 bin/
 target/
-.settings/
+!/.s2i/*

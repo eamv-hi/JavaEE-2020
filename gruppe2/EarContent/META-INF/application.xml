@@ -6,8 +6,8 @@
   </module>
   <module>
     <web>
-      <web-uri>gruppe2a.web.war</web-uri>
-      <context-root>gruppe2a.web</context-root>
+      <web-uri>gruppe2.web2.war</web-uri>
+      <context-root>gruppe2.web2</context-root>
     </web>
   </module>
 </application>

@@ -13,7 +13,6 @@ import gruppe1.ejb.entity.Education;
 import gruppe1.ejbClient.entity.CourseDTO;
 
 @Stateless
-@LocalBean
 public class CourseBean implements CourseBeanRemote, CourseBeanLocal {
 	@PersistenceContext
 	private EntityManager em;
