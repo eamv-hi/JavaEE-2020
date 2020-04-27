@@ -1,3 +1,8 @@
+body {
+	font-family: Arial;
+	margin: 24px;
+}
+
 .ui-inputfield {
 	box-shadow: none;
 }
@@ -15,4 +20,8 @@
 	box-sizing: border-box;
 	width: -webkit-fill-available;
 	width: -moz-available;
+}
+
+.mb-1 {
+	margin-bottom: 0.25rem;
 }

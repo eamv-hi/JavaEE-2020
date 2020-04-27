@@ -51,8 +51,7 @@ public class SchoolOverview implements Serializable {
 	public void onRowEdit(RowEditEvent<SchoolDTO> event) {
 		SchoolDTO schoolDTO = event.getObject();
 
-		// TODO lav pænere pop up
-		FacesMessage msg = new FacesMessage("Skole med navnet " + schoolDTO.getName() + " blev redigeret");
+		FacesMessage msg = new FacesMessage("", "Skole med navnet " + schoolDTO.getName() + " blev redigeret");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 		school.update(schoolDTO);

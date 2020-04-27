@@ -20,37 +20,46 @@
 </h:head>
 
 <h:body>
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Id:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtSchoolView.schoolId}</p>
+	<div style="display: flex; justify-content: space-between">
+		<div>
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Id:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtSchoolView.schoolId}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Navn:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.name}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Adresse:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.address}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">By:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.city}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Postnummer:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.postalNumber}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Telefonnummer:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.phone}</p>
+			</div>
+		</div>
+
+		<div>
+			<p:commandButton value="Tilbage til skoleoversigt"
+				action="#{dtSchoolView.back}" />
+		</div>
 	</div>
 
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Navn:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.name}</p>
-	</div>
-
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Adresse:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.address}</p>
-	</div>
-
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">By:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.city}</p>
-	</div>
-
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Postnummer:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.postalNumber}</p>
-	</div>
-
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Telefonnummer:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtSchoolView.school.phone}</p>
-	</div>
-
-	<h:form>
+	<h:form class="mb-1">
 		<p:commandButton value="Slet skole" action="#{dtSchoolView.delete}">
 			<p:confirm header="Bekræft"
 				message='Er du sikker på, at du vil slette "#{dtSchoolView.school.name}"?'
@@ -65,7 +74,7 @@
 		</p:confirmDialog>
 	</h:form>
 
-
+	<p:separator style="margin-top: 15px; margin-bottom: 15px" />
 
 	<h:form id="form">
 		<p:growl id="msgs" showDetail="true" />
@@ -75,6 +84,10 @@
 
 			<p:ajax event="rowEdit" listener="#{dtSchoolView.onRowEdit}"
 				update=":form:msgs" />
+
+			<f:facet name="header">
+            	Alle uddannelser på #{dtSchoolView.school.name}
+        	</f:facet>
 
 			<p:column headerText="Id">
 				<h:outputText value="#{education.educationId}" />
@@ -152,7 +165,7 @@
 			</p:column>
 		</p:dataTable>
 	</h:form>
-	
+
 	<h:form style="margin-top: 30px">
 		<span class="ui-float-label" style="display: block"> <p:inputText
 				id="float-input1" value="#{dtSchoolView.forCreate.name}" /> <p:outputLabel
@@ -186,6 +199,5 @@
 			update=":form:educationTable" action="#{dtSchoolView.addEducation}"
 			style="margin-top: 5px" />
 	</h:form>
-
 </h:body>
 </html>

@@ -12,32 +12,43 @@
 
 	<h:outputStylesheet name="primeicons/primeicons.css"
 		library="primefaces" />
+	<h:outputStylesheet library="css" name="style.css" />
 
 	<f:metadata>
 		<f:viewParam name="courseId" value="#{dtCourseView.courseId}" />
+		<f:viewAction action="#{dtCourseView.init}" />
 	</f:metadata>
 </h:head>
 
 <h:body>
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Id:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtCourseView.courseId}</p>
-	</div>
+	<div style="display: flex; justify-content: space-between">
+		<div>
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Id:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtCourseView.courseId}</p>
+			</div>
 
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Fag:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtCourseView.course.name}</p>
-	</div>
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Fag:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtCourseView.course.name}</p>
+			</div>
 
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Lærer:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtCourseView.course.teacherName}</p>
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Lærer:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtCourseView.course.teacherName}</p>
+			</div>
+		</div>
+
+		<div>
+			<p:commandButton value="Tilbage til fagoversigt"
+				action="#{dtCourseView.back}" />
+		</div>
 	</div>
 
 	<h:form>
-		<p:commandButton value="Slet fag"
-			action="#{dtCourseView.delete}">
-			<p:confirm header="Bekræft" message='Er du sikker på, at du vil slette "#{dtCourseView.course.name}"?'
+		<p:commandButton value="Slet fag" action="#{dtCourseView.delete}">
+			<p:confirm header="Bekræft"
+				message='Er du sikker på, at du vil slette "#{dtCourseView.course.name}"?'
 				icon="pi pi-exclamation-triangle" />
 		</p:commandButton>
 

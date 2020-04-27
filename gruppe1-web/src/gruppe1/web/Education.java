@@ -72,12 +72,14 @@ public class Education implements Serializable {
 	public void onRowEdit(RowEditEvent<CourseDTO> event) {
 		CourseDTO courseDTO = event.getObject();
 
-		// TODO lav pænere pop up
-		FacesMessage msg = new FacesMessage("Course med navnet " +
-				courseDTO.getName() + " blev redigeret");
+		FacesMessage msg = new FacesMessage("", "Course med navnet " + courseDTO.getName() + " blev redigeret");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 		// TODO: Man bør nok overveje om at vi kan opdatere vha. educationBean.
 		course.update(courseDTO);
+	}
+	
+	public String back() {
+		return "school?schoolId=" + education.getSchoolDTO().getSchoolId() + "&faces-redirect=true";
 	}
 }

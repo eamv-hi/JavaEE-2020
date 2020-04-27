@@ -20,40 +20,49 @@
 </h:head>
 
 <h:body>
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Id:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtEducationView.educationId}</p>
+	<div style="display: flex; justify-content: space-between">
+		<div>
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Id:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtEducationView.educationId}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Navn:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.name}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Semesterlængde:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.lengthOfSemesters}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Antal
+					semestre:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.numberOfSemesters}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Antal
+					undervisningstimer:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.lessonsPrWeek}</p>
+			</div>
+
+			<div class="mb-1">
+				<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Ects
+					point:</h4>
+				<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.ects}</p>
+			</div>
+		</div>
+
+		<div>
+			<p:commandButton value="Tilbage til uddanelsesoversigt"
+				action="#{dtEducationView.back}" />
+		</div>
 	</div>
 
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Navn:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.name}</p>
-	</div>
-
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Semesterlængde:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.lengthOfSemesters}</p>
-	</div>
-
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Antal
-			semestre:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.numberOfSemesters}</p>
-	</div>
-
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Antal
-			undervisningstimer:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.lessonsPrWeek}</p>
-	</div>
-
-	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Ects
-			point:</h4>
-		<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.ects}</p>
-	</div>
-
-	<h:form>
+	<h:form class="mb-1">
 		<p:commandButton value="Slet uddannelse"
 			action="#{dtEducationView.delete}">
 			<p:confirm header="Bekræft"
@@ -69,6 +78,8 @@
 		</p:confirmDialog>
 	</h:form>
 
+	<p:separator style="margin-top: 15px; margin-bottom: 15px" />
+
 	<h:form id="form">
 		<p:growl id="msgs" showDetail="true" />
 
@@ -77,6 +88,10 @@
 
 			<p:ajax event="rowEdit" listener="#{dtEducationView.onRowEdit}"
 				update=":form:msgs" />
+
+			<f:facet name="header">
+            	Alle fag på #{dtEducationView.education.name}
+        	</f:facet>
 
 			<p:column headerText="Id">
 				<h:outputText value="#{course.courseId}" />

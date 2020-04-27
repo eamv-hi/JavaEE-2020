@@ -24,6 +24,10 @@
 			<p:ajax event="rowEdit" listener="#{dtSchoolOverviewView.onRowEdit}"
 				update=":form:msgs" />
 
+			<f:facet name="header">
+            	Alle skoler
+        	</f:facet>
+
 			<p:column headerText="Id">
 				<h:outputText value="#{school.schoolId}" />
 			</p:column>
@@ -102,8 +106,8 @@
 	</h:form>
 	<h:form style="margin-top: 30px">
 		<span class="ui-float-label" style="display: block"> <p:inputText
-				id="float-input1" value="#{dtSchoolOverviewView.forCreate.name}" /> <p:outputLabel
-				for="@previous" value="Navn" />
+				id="float-input1" value="#{dtSchoolOverviewView.forCreate.name}" />
+			<p:outputLabel for="@previous" value="Navn" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
@@ -119,8 +123,9 @@
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input4" value="#{dtSchoolOverviewView.forCreate.city}" />
-			<p:outputLabel for="@previous" value="By" />
+			<p:inputText id="float-input4"
+				value="#{dtSchoolOverviewView.forCreate.city}" /> <p:outputLabel
+				for="@previous" value="By" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
