@@ -1,8 +1,6 @@
 package gruppe1.ejb.entity;
 
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,7 +13,6 @@ import gruppe1.ejbClient.entity.EducationDTO;
 
 @Entity
 @NamedQuery(name = "getAllCourses", query = "SELECT c FROM Course c")
-
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -70,7 +67,7 @@ public class Course implements Serializable {
 			if (educationDTO != null && education.getEducationId() == educationDTO.getEducationId()) {
 				courseDTO.setEducationDTO(educationDTO);
 			} else {
-				courseDTO.setEducationDTO(education.toDTO(courseDTO));
+				courseDTO.setEducationDTO(education.toDTO(null, courseDTO));
 			}
 		}
 

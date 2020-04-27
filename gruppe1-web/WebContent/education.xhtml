@@ -15,7 +15,7 @@
 	<h:outputStylesheet library="css" name="style.css" />
 	<f:metadata>
 		<f:viewParam name="educationId" value="#{dtEducationView.educationId}" />
-		<f:viewAction action="#{dtEducationView.init}"/>
+		<f:viewAction action="#{dtEducationView.init}" />
 	</f:metadata>
 </h:head>
 
@@ -36,20 +36,38 @@
 	</div>
 
 	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Antal semestre:</h4>
+		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Antal
+			semestre:</h4>
 		<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.numberOfSemesters}</p>
 	</div>
 
 	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Antal undervisningstimer:</h4>
+		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Antal
+			undervisningstimer:</h4>
 		<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.lessonsPrWeek}</p>
 	</div>
 
 	<div>
-		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Ects point:</h4>
+		<h4 style="display: inline-block; margin: 0px; margin-right: 4px">Ects
+			point:</h4>
 		<p style="display: inline-block; margin: 0px;">#{dtEducationView.education.ects}</p>
 	</div>
 
+	<h:form>
+		<p:commandButton value="Slet uddannelse"
+			action="#{dtEducationView.delete}">
+			<p:confirm header="Bekræft"
+				message='Er du sikker på, at du vil slette "#{dtEducationView.education.name}"?'
+				icon="pi pi-exclamation-triangle" />
+		</p:commandButton>
+
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Ja, slet uddannelse	" type="button"
+				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+			<p:commandButton value="Nej" type="button"
+				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+		</p:confirmDialog>
+	</h:form>
 
 	<h:form id="form">
 		<p:growl id="msgs" showDetail="true" />
@@ -114,21 +132,6 @@
 
 		<p:commandButton value="Tilføj fag" update=":form:courseTable"
 			action="#{dtEducationView.addCourse}" style="margin-top: 5px" />
-	</h:form>
-
-	<h:form>
-		<p:commandButton value="Slet uddannelse" action="#{dtEducationView.delete}">
-			<p:confirm header="Bekræft"
-				message='Er du sikker på, at du vil slette "#{dtEducationView.education.name}"?'
-				icon="pi pi-exclamation-triangle" />
-		</p:commandButton>
-
-		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-			<p:commandButton value="Ja, slet uddannelse	" type="button"
-				styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-			<p:commandButton value="Nej" type="button"
-				styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-		</p:confirmDialog>
 	</h:form>
 </h:body>
 </html>

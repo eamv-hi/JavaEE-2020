@@ -15,6 +15,7 @@
 	<h:outputStylesheet library="css" name="style.css" />
 	<f:metadata>
 		<f:viewParam name="schoolId" value="#{dtSchoolView.schoolId}" />
+		<f:viewAction action="#{dtSchoolView.init}" />
 	</f:metadata>
 </h:head>
 
@@ -70,10 +71,10 @@
 		<p:growl id="msgs" showDetail="true" />
 
 		<p:dataTable id="educationTable" var="education"
-			value="#{dtSchoolView.educations}" editable="true">
+			value="#{dtSchoolView.school.educationDTOs}" editable="true">
 
-			<p:ajax event="rowEdit"
-				listener="#{dtSchoolView.onRowEdit}" update=":form:msgs" />
+			<p:ajax event="rowEdit" listener="#{dtSchoolView.onRowEdit}"
+				update=":form:msgs" />
 
 			<p:column headerText="Id">
 				<h:outputText value="#{education.educationId}" />
@@ -150,12 +151,12 @@
 				</p:linkButton>
 			</p:column>
 		</p:dataTable>
-
 	</h:form>
+	
 	<h:form style="margin-top: 30px">
 		<span class="ui-float-label" style="display: block"> <p:inputText
-				id="float-input1" value="#{dtSchoolView.forCreate.name}" />
-			<p:outputLabel for="@previous" value="Navn" />
+				id="float-input1" value="#{dtSchoolView.forCreate.name}" /> <p:outputLabel
+				for="@previous" value="Navn" />
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
@@ -177,14 +178,12 @@
 		</span>
 
 		<span class="ui-float-label" style="display: block; margin-top: 20px">
-			<p:inputText id="float-input5"
-				value="#{dtSchoolView.forCreate.ects}" /> <p:outputLabel
-				for="@previous" value="Ects point" />
+			<p:inputText id="float-input5" value="#{dtSchoolView.forCreate.ects}" />
+			<p:outputLabel for="@previous" value="Ects point" />
 		</span>
 
 		<p:commandButton value="Tilføj uddannelse"
-			update=":form:educationTable"
-			action="#{dtSchoolView.addEducation}"
+			update=":form:educationTable" action="#{dtSchoolView.addEducation}"
 			style="margin-top: 5px" />
 	</h:form>
 

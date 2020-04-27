@@ -15,11 +15,11 @@ import javax.persistence.OneToMany;
 
 import gruppe1.ejbClient.entity.CourseDTO;
 import gruppe1.ejbClient.entity.EducationDTO;
+import gruppe1.ejbClient.entity.SchoolDTO;
 
 @Entity
 @NamedQuery(name = "getAllEducations", query = "SELECT e FROM Education e")
 @NamedQuery(name = "getAllEducationsWhitSchoolId", query = "SELECT e FROM Education e WHERE e.school.schoolId=:schoolId")
-
 public class Education implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -103,10 +103,10 @@ public class Education implements Serializable {
 	}
 
 	public EducationDTO toDTO() {
-		return toDTO(null);
+		return toDTO(null, null);
 	}
 
-	public EducationDTO toDTO(CourseDTO courseDTO) {
+	public EducationDTO toDTO(SchoolDTO schoolDTO, CourseDTO courseDTO) {
 		EducationDTO educationDTO = new EducationDTO();
 
 		educationDTO.setEducationId(educationId);
@@ -126,6 +126,14 @@ public class Education implements Serializable {
 				}
 			});
 		}
+		
+		if (school != null) {
+			if (schoolDTO != null && school.getSchoolId() == schoolDTO.getSchoolId()) {
+				educationDTO.setSchoolDTO(schoolDTO);
+			} else {
+				educationDTO.setSchoolDTO(school.toDTO(educationDTO));
+			}
+		}
 
 		return educationDTO;
 	}
@@ -137,6 +145,7 @@ public class Education implements Serializable {
 		education.setNumberOfSemesters(dto.getNumberOfSemesters());
 		education.setLessonsPrWeek(dto.getLessonsPrWeek());
 		education.setEcts(dto.getEcts());
+		education.setSchool(School.fromDTO(new School(), dto.getSchoolDTO()));
 
 		return education;
 	}

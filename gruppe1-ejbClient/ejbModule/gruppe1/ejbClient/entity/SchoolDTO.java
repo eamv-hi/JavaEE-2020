@@ -1,5 +1,8 @@
 package gruppe1.ejbClient.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -12,6 +15,7 @@ public class SchoolDTO {
 	private int postalNumber;
 	private String city;
 	private String phone;
+	private List<EducationDTO> educationDTOs = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -59,5 +63,13 @@ public class SchoolDTO {
 
 	public void setSchoolId(int schoolId) {
 		this.schoolId = schoolId;
+	}
+	
+	public List<EducationDTO> getEducationDTOs() {
+		return educationDTOs;
+	}
+
+	public void setEducationDTO(List<EducationDTO> educationDTOs) {
+		this.educationDTOs = educationDTOs;
 	}
 }

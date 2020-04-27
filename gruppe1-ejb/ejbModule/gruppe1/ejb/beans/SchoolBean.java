@@ -18,7 +18,6 @@ import gruppe1.ejbClient.entity.SchoolDTO;
  * Session Bean implementation class SchoolBean
  */
 @Stateless
-@LocalBean
 public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 	@PersistenceContext
 	private EntityManager em;
@@ -29,7 +28,7 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 	@Override
 	public SchoolDTO create(SchoolDTO schoolDTO) {
 		if (schoolDTO != null) {
-			School school = fromDTO(new School(), schoolDTO);
+			School school = School.fromDTO(new School(), schoolDTO);
 			em.persist(school);
 			return school.toDTO();
 		}
@@ -41,7 +40,7 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 		School entity = findSchool(school.getSchoolId());
 
 		if (entity != null && school != null) {
-			em.persist(fromDTO(entity, school));
+			em.persist(School.fromDTO(entity, school));
 		}
 	}
 
@@ -77,16 +76,6 @@ public class SchoolBean implements SchoolBeanRemote, SchoolBeanLocal {
 				.stream()
 				.map(c -> c.toDTO())
 				.collect(Collectors.toList());
-	}
-
-	private School fromDTO(School school, SchoolDTO dto) {
-		school.setName(dto.getName());
-		school.setAddress(dto.getAddress());
-		school.setPostalNumber(dto.getPostalNumber());
-		school.setCity(dto.getCity());
-		school.setPhone(dto.getPhone());
-
-		return school;
 	}
 
 	private School findSchool(int id) {

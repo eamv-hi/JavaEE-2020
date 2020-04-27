@@ -10,6 +10,7 @@ public class EducationDTO {
 	private int numberOfSemesters;
 	private int lessonsPrWeek;
 	private int ects;
+	private SchoolDTO schoolDTO;
 	private List<CourseDTO> courseDTOs = new ArrayList<>();
 
 	public String getName() {
@@ -58,6 +59,14 @@ public class EducationDTO {
 
 	public void setEducationId(int educationId) {
 		this.educationId = educationId;
+	}
+	
+	public SchoolDTO getSchoolDTO() {
+		return schoolDTO;
+	}
+
+	public void setSchoolDTO(SchoolDTO schoolDTO) {
+		this.schoolDTO = schoolDTO;
 	}
 	
 	public List<CourseDTO> getCourseDTOs() {
