@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+	<!-- xmlns:ui="http://java.sun.com/jsf/facelets" -->
+<h:head>
+    <title>oversigt over studerende</title>
+</h:head>
+<h:body> <!-- https://www.primefaces.org/showcase/ui/data/datatable/basic.xhtml -->
+    <p:dataTable id="teamTable" var="team" value="#{dtTeamView.teams}">
+        <p:column headerText="Id">
+            <h:outputText value="#{team.teamId}" />
+        </p:column>
+        <p:column headerText="Holdnavn">
+            <h:outputText value="#{team.teamName}" />
+        </p:column>
+        <p:column headerText="Start dato">
+            <h:outputText value="#{team.startDate}" />
+        </p:column>
+        <p:column headerText="Slut dato">
+            <h:outputText value="#{team.endDate}" />
+        </p:column>
+        
+        <p:column headerText="Uddannelsesid">
+            <h:outputText value="#{team.educationId}" />
+        </p:column>
+    </p:dataTable>
+</h:body>
+</html>

@@ -6,6 +6,8 @@
 	<!-- xmlns:ui="http://java.sun.com/jsf/facelets" -->
 <h:head>
     <title>Holdoversigt</title>
+    <h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body> <!-- https://www.primefaces.org/showcase/ui/data/datatable/basic.xhtml -->
     <p:dataTable id="teamTable" var="team" value="#{dtTeamView.teams}">
@@ -22,9 +24,15 @@
             <h:outputText value="#{team.endDate}" />
         </p:column>
         
-        <p:column headerText="Uddannelsesid">
+        <p:column headerText="Uddannelses-id">
             <h:outputText value="#{team.educationId}" />
         </p:column>
+        
+        <p:column headerText="Handlinger">
+			<p:linkButton outcome="student" icon="pi pi-eye" title="Se Studerende">
+				<!--<f:param name="studentId" value="#{student.studentId}" />-->
+			</p:linkButton>
+		</p:column>
     </p:dataTable>
 <h:form id="form">
         <p:outputLabel for="teamName" value="Holdnavn: " />
@@ -41,9 +49,9 @@
         <p:outputLabel for="basic" value="Uddannelse:" />
         <p:selectOneListbox id="basic" value="#{dtTeamView.educationId}">
         <!-- #TODO implementere forløkke -->
-            <f:selectItem itemLabel="Option 1" itemValue="1" />
-            <f:selectItem itemLabel="Option 2" itemValue="2" />
-            <f:selectItem itemLabel="Option 3" itemValue="3" />
+            <f:selectItem itemLabel="Datamatiker" itemValue="1" />
+            <f:selectItem itemLabel="Multimedia-Designer" itemValue="2" />
+            <f:selectItem itemLabel="Finansøkonom" itemValue="3" />
         	<!--<f:selectItems value="#{TeamOverview.options}"  itemLabel="#{EducationDTO.name}" itemValue="#{EducationDTO.educationId}" /> -->
         </p:selectOneListbox>
     <p:commandButton value="Tilføj Hold" update=":teamTable" actionListener="#{dtTeamView.addTeam}" icon="pi pi-check" />
