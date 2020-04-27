@@ -21,7 +21,6 @@ public class EducationBean implements EducationBeanRemote, EducationBeanLocal {
 
 	@Override
 	public EducationDTO create(EducationDTO educationDTO) {
-		System.out.println("TESTING");
 		if (educationDTO != null) {
 			Education education = Education.fromDTO(new Education(), educationDTO);
 			em.persist(education);
