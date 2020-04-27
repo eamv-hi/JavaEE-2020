@@ -2,9 +2,9 @@ package gruppe1.ejbClient.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Named
 @RequestScoped
@@ -15,6 +15,7 @@ public class SchoolDTO {
 	private int postalNumber;
 	private String city;
 	private String phone;
+	@XmlTransient
 	private List<EducationDTO> educationDTOs = new ArrayList<>();
 
 	public String getName() {

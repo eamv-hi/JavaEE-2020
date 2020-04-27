@@ -2,6 +2,7 @@ package gruppe1.ejbClient.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlTransient;
 
 public class EducationDTO {
 	private int educationId;
@@ -11,6 +12,7 @@ public class EducationDTO {
 	private int lessonsPrWeek;
 	private int ects;
 	private SchoolDTO schoolDTO;
+	@XmlTransient
 	private List<CourseDTO> courseDTOs = new ArrayList<>();
 
 	public String getName() {

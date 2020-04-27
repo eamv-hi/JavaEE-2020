@@ -45,27 +45,27 @@ public class SchoolResource {
 		return Response.ok().entity(school).build();
 	}
 
-	@POST
-	public Response createSchool(SchoolDTO schoolDTO) {
-		schoolDTO = schoolBean.create(schoolDTO);
-		return Response.status(Response.Status.CREATED).entity(schoolDTO).build();
-	}
-
-	@PUT
-	@Path("/{id}")
-	public Response updateSchool(@PathParam("id") Integer id, SchoolDTO schoolDTO) {
-		if (schoolBean.get(id) == null) {
-			return Response.status(Response.Status.NOT_FOUND).build();
-		}
-		schoolBean.update(schoolDTO);
-		return Response.status(Response.Status.NO_CONTENT).build();
-	}
-
-	@DELETE
-	@Path("/{id}")
-	public Response deleteSchool(@PathParam("id") Integer id) {
-		schoolBean.delete(id);
-		// TODO: Returner 404 hvis den ikke findes
-		return Response.ok().build();
-	}
+//	@POST
+//	public Response createSchool(SchoolDTO schoolDTO) {
+//		schoolDTO = schoolBean.create(schoolDTO);
+//		return Response.status(Response.Status.CREATED).entity(schoolDTO).build();
+//	}
+//
+//	@PUT
+//	@Path("/{id}")
+//	public Response updateSchool(@PathParam("id") Integer id, SchoolDTO schoolDTO) {
+//		if (schoolBean.get(id) == null) {
+//			return Response.status(Response.Status.NOT_FOUND).build();
+//		}
+//		schoolBean.update(schoolDTO);
+//		return Response.status(Response.Status.NO_CONTENT).build();
+//	}
+//
+//	@DELETE
+//	@Path("/{id}")
+//	public Response deleteSchool(@PathParam("id") Integer id) {
+//		schoolBean.delete(id);
+//		// TODO: Returner 404 hvis den ikke findes
+//		return Response.ok().build();
+//	}
 }
