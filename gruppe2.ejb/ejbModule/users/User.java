@@ -25,11 +25,11 @@ public class User {
     @Column(name = "email")
     protected String email;
     @Column(name = "phoneNo")
-    protected int phoneNo;
+    protected String phoneNo;
     @Column(name = "role")
     protected String role;
     
-    public User(int id, String firstName, String lastName, String email, int phoneNo, String role) {
+    public User(int id, String firstName, String lastName, String email, String phoneNo, String role) {
     	this.id = id;
     	this.firstName = firstName;
     	this.lastName = lastName;
@@ -82,13 +82,13 @@ public class User {
 	}
 
 
-	public int getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 
 
-	public void setPhoneNo(int phoneNo) {
-		this.phoneNo = phoneNo;
+	public void setPhoneNo(String i) {
+		this.phoneNo = i;
 	}
 
 

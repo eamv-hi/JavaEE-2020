@@ -25,7 +25,7 @@ public class Student extends User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
     public Student(int id, String firstName, String lastName,
-    		String email, int phoneNo, String role, int studentNo,String subject) {
+    		String email, String phoneNo, String role, int studentNo,String subject) {
     	super(id, firstName, lastName, email, phoneNo, role);
     	this.studentNo = studentNo;
     }

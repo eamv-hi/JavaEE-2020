@@ -5,7 +5,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://xmlns.jcp.org/jsf/html">
 
-<f:loadBundle basename="resources" var="msg" />
 <head>
 <title><ui:insert name="pageTitle">Undervisere</ui:insert></title>
 <style type="text/css">
@@ -36,7 +35,7 @@ body {
 
 			<tr>
 				<td class="header" height="42" align="center" valign="middle"
-					width="100%" bgcolor="#E4EBEB"><ui:insert name="pageHeader">All the Teachers</ui:insert>
+					width="100%" bgcolor="#E4EBEB"><ui:insert name="pageHeader">Alle Undervisere</ui:insert>
 				</td>
 			</tr>
 			<tr>
@@ -104,23 +103,31 @@ body {
 			</tr>
 		</tbody>
 	</table>
-	<h2>Opret ny underviser</h2>
-	<label>Fornavn</label>
-	<h:inputtext id="firstName"></h:inputtext>
-	<br></br>
-	<label>Efternavn</label>
-	<h:inputtext id="lastName"></h:inputtext>
-	<br></br>
-	<label>Telefon</label>
-	<h:inputtext id="phoneNo"></h:inputtext>
-	<br></br>
-	<label>Email</label>
-	<h:inputtext id="email"></h:inputtext>
-	<br></br>
-	<label>Rolle</label>
-	<h:inputtext id="role"></h:inputtext>
-	<br></br>
-	<h:commandbutton action="#{teacherLogic.saveTeacher()}">Opret Underviser</h:commandbutton>
+	<h:form id="createTeacher">
+		<h2>Opret en ny underviser</h2>
+		
+		<label>Fornavn</label>
+		<h:inputText id="firstName"></h:inputText>
+		<br></br>
+		
+		<label>Efternavn</label>
+		<h:inputText id="lastName"></h:inputText>
+		<br></br>
+		
+		<label>Telefon</label>
+		<h:inputText id="phoneNo"></h:inputText>	
+		<br></br>
+		
+		<label>Email</label>
+		<h:inputText id="email"></h:inputText>
+		<br></br>
+		
+		<label>Rolle</label>
+		<h:inputText id="role"></h:inputText>
+		<br></br>
+		
+		<h:commandButton value="Opret Underviser" id="submit" action="#{teacherLogic.saveTeacher}"></h:commandButton>
+	</h:form>
 </body>
 
 </html>

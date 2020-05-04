@@ -6,7 +6,7 @@ public class TeacherDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private int phoneNo;
+    private String phoneNo;
     private String role;
     private int teacherNo;
 	private String hiredDate;
@@ -16,7 +16,7 @@ public class TeacherDTO {
 		super();
 	}
 	
-	 public TeacherDTO(int id, String firstname, String lastname, String email, int phoneNo, String role,int teacherNo, String hireddate, String jobtitle) {
+	 public TeacherDTO(int id, String firstname, String lastname, String email, String phoneNo, String role,int teacherNo, String hireddate, String jobtitle) {
 	    	this.id = id;
 	    	this.firstName = firstname;
 	    	this.lastName = lastname;
@@ -61,11 +61,11 @@ public class TeacherDTO {
 		this.email = email;
 	}
 
-	public int getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(int phoneNo) {
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 

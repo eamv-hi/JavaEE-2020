@@ -23,7 +23,7 @@ public class TeacherLogic {
 		TeacherDTO teacherdto = new TeacherDTO();
 		teacherdto.setFirstName("Karl");
 		teacherdto.setLastName("Karlsen");
-		teacherdto.setPhoneNo(648576);
+		teacherdto.setPhoneNo("648576");
 		teacherdto.setEmail("test@test.dk");
 		teacherdto.setRole("Teacher");
 		return teacherdto;
@@ -33,7 +33,7 @@ public class TeacherLogic {
 		TeacherDTO teacherdto = new TeacherDTO();
 		teacherdto.setFirstName("firstName");
 		teacherdto.setLastName("lastName");
-		teacherdto.setPhoneNo(Integer.parseInt("phoneNo"));
+		teacherdto.setPhoneNo("phoneNo");
 		teacherdto.setEmail("email");
 		teacherdto.setRole("role");
 	}
