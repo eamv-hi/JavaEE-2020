@@ -107,26 +107,26 @@ body {
 		<h2>Opret en ny underviser</h2>
 		
 		<label>Fornavn</label>
-		<h:inputText id="firstName"></h:inputText>
+		<h:inputText value="#{teacherLogic.firstname}"></h:inputText>
 		<br></br>
 		
 		<label>Efternavn</label>
-		<h:inputText id="lastName"></h:inputText>
+		<h:inputText value="#{teacherLogic.lastname}"></h:inputText>
 		<br></br>
 		
 		<label>Telefon</label>
-		<h:inputText id="phoneNo"></h:inputText>	
+		<h:inputText value="#{teacherLogic.phoneNo}"></h:inputText>	
 		<br></br>
 		
 		<label>Email</label>
-		<h:inputText id="email"></h:inputText>
+		<h:inputText value="#{teacherLogic.email}"></h:inputText>
 		<br></br>
 		
 		<label>Rolle</label>
-		<h:inputText id="role"></h:inputText>
+		<h:inputText value="#{teacherLogic.role}"></h:inputText>
 		<br></br>
 		
-		<h:commandButton value="Opret Underviser" id="submit" action="#{teacher_bean.make_teacher}"></h:commandButton>
+		<h:commandButton value="Opret Underviser" id="submit" action="#{teacherLogic.create_teacher}"></h:commandButton>
 	</h:form>
 </body>
 

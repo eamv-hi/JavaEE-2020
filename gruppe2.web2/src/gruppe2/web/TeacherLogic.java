@@ -19,23 +19,17 @@ public class TeacherLogic {
 	private String email;
 	private String role;
 
-	public TeacherDTO teachers() {
-		TeacherDTO teacherdto = new TeacherDTO();
-		teacherdto.setFirstName("Karl");
-		teacherdto.setLastName("Karlsen");
-		teacherdto.setPhoneNo("648576");
-		teacherdto.setEmail("test@test.dk");
-		teacherdto.setRole("Teacher");
-		return teacherdto;
-	}
 	
-	public void saveTeacher() {
+	
+	public void create_teacher() {
 		TeacherDTO teacherdto = new TeacherDTO();
-		teacherdto.setFirstName("firstName");
-		teacherdto.setLastName("lastName");
-		teacherdto.setPhoneNo("phoneNo");
-		teacherdto.setEmail("email");
-		teacherdto.setRole("role");
+		teacherdto.setFirstName(firstname);
+		teacherdto.setLastName(lastname);
+		teacherdto.setPhoneNo(phoneNo);
+		teacherdto.setEmail(email);
+		teacherdto.setRole(role);
+		
+		ejb.teacher_create(teacherdto);
 	}
 
 	public String getFirstname() {
