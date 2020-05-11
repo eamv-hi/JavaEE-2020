@@ -103,7 +103,7 @@ body {
 			</tr>
 		</tbody>
 	</table>
-	<h:form id="createTeacher">
+	<h:form id="make_teacher">
 		<h2>Opret en ny underviser</h2>
 		
 		<label>Fornavn</label>
@@ -126,7 +126,7 @@ body {
 		<h:inputText id="role"></h:inputText>
 		<br></br>
 		
-		<h:commandButton value="Opret Underviser" id="submit" action="#{teacherLogic.saveTeacher}"></h:commandButton>
+		<h:commandButton value="Opret Underviser" id="submit" action="#{teacher_bean.make_teacher}"></h:commandButton>
 	</h:form>
 </body>
 

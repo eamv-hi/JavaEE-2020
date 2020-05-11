@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/underviser")
+//@WebServlet("/underviser")
 public class Teacher extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

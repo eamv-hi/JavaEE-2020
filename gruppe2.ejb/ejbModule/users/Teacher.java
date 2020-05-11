@@ -12,9 +12,9 @@ public class Teacher extends User {
 
 	@Column(name = "teacher_No", nullable = false)
     private int teacherNo;
-	@Column(name = "hiredDate", nullable = false)
+	@Column(name = "hiredDate", nullable = true)
 	private String hiredDate;
-	@Column(name = "jobTitle", nullable = false)
+	@Column(name = "jobTitle", nullable = true)
 	private String jobTitle;
 	
     public Teacher() {

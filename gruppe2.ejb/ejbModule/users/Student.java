@@ -15,7 +15,6 @@ import javaee.dto.StudentDTO;
 public class Student extends User implements Serializable{
 
 
-   
 	@Column(name = "student_No", nullable = false)
 	private int studentNo;
 	@Column(name = "subject", nullable = false)

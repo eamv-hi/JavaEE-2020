@@ -18,7 +18,7 @@ public class User {
     protected int id;
 	
 	
-    @Column(name = "fist_name")
+    @Column(name = "first_name")
     protected String firstName;
     @Column(name = "last_name")
     protected String lastName;
