@@ -11,8 +11,10 @@ public interface ParameterBeanLocal {
 
 	public ParameterDTO findParameter(String key);
 	
-	public ParameterDTO testWs(String key);
-	
 	public List<ParameterDTO> searchParameters(String search);
+	
+	public ParameterDTO testWs1(String key);
+	
+	public List<ParameterDTO> testWs2(String search);
 	
 }
