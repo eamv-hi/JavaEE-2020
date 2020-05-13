@@ -22,7 +22,8 @@ public class TestWs extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Parameter: " + ejb.testWs("key1"));
+		response.getWriter().append("Parameter: " + ejb.testWs1("key1"));
+		response.getWriter().append("ParameterList: " + ejb.testWs2("key"));
 	}
 
 

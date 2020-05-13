@@ -27,8 +27,13 @@ public class ParameterBean implements ParameterBeanLocal {
 	}
 
 	@Override
-	public ParameterDTO testWs(String key) {
+	public ParameterDTO testWs1(String key) {
 		return test.getParameter(key);
+	}
+
+	@Override
+	public List<ParameterDTO> testWs2(String search) {
+		return test.search(search);
 	}
 
 }
