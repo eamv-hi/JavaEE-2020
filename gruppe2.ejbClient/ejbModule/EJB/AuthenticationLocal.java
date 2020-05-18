@@ -1,5 +1,7 @@
 package EJB;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import javaee.dto.StudentDTO;
@@ -16,6 +18,8 @@ public interface AuthenticationLocal {
 	public StudentDTO student_read(int id);
 
 	public TeacherDTO teacher_read(int id);
+	
+	public List<TeacherDTO> teacher_readall();
 	
 	public void student_update(StudentDTO student);
 
