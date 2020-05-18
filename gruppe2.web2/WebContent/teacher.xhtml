@@ -51,28 +51,34 @@ body {
 							<!-- 							<td align="center" width="100px" valign="middle"></td> -->
 
 							<!--  <ui:insert name="body">Page Body</ui:insert>-->
-							<p:dataTable var="underviser" action="#{teacherLogic.read_teacher}" >
-								<p:column headerText="Fornavn">
-									<h:outputText value="#{teacherLogic.firstname}" />
-								</p:column>
-
-								<p:column headerText="Efternavn">
-									<h:outputText value="#{teacherLogic.lastname}" />
-								</p:column>
-
-								<p:column headerText="Email">
-									<h:outputText value="#{teacherLogic.email}" />
-								</p:column>
-
-								<p:column headerText="Telefon">
-									<h:outputText value="#{teacherLogic.phoneNo}" />
-								</p:column>
-
-								<p:column headerText="Rolle" value="Rolle">
-									<h:outputText value="#{teacherLogic.role}" />
-								</p:column>
+							<h:form id="UnderviserTabel" value="">		
+							<h:commandButton value="Indlæs Undervisere" id="submit" action="#{teacherLogic.readall_teacher}"></h:commandButton>
+				
+							<p:dataTable var="underviser" action="#{teacherLogic.readall_teacher}" value=""> <!--  skal have value før tabellen viser noget -->
+								
+								<ui:repeat value="#{teacherLogic.readall_teacher.teachers}" var="teacher">
+									<p:column headerText="Fornavn" value="Fornavn">
+										<h:outputText value="#{teacherLogic.firstname}" />
+									</p:column>
+	
+									<p:column headerText="Efternavn">
+										<h:outputText value="#{teacherLogic.lastname}" />
+									</p:column>
+	
+									<p:column headerText="Email">
+										<h:outputText value="#{teacherLogic.email}" />
+									</p:column>
+	
+									<p:column headerText="Telefon">
+										<h:outputText value="#{teacherLogic.phoneNo}" />
+									</p:column>
+	
+									<p:column headerText="Rolle" value="Rolle">
+										<h:outputText value="#{teacherLogic.role}" />
+									</p:column>
+								</ui:repeat>
 							</p:dataTable>
-						
+							</h:form>
 						</tbody>
 					</table>
 				</td>

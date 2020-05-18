@@ -27,13 +27,14 @@ public class TeacherLogic {
 	
 	
 	public void create_teacher() {
+		System.out.println("Opretter underviser");
 		TeacherDTO teacherdto = new TeacherDTO();
 		teacherdto.setFirstName(firstname);
 		teacherdto.setLastName(lastname);
 		teacherdto.setPhoneNo(phoneNo);
 		teacherdto.setEmail(email);
 		teacherdto.setRole(role);
-		
+
 		ejb.teacher_create(teacherdto);
 	}
 
@@ -68,16 +69,18 @@ public class TeacherLogic {
 		role = teacherdto.getRole();
 	}
 	
-	public void readall_teacher() {
+	public List<TeacherDTO> readall_teacher() {
 		List<TeacherDTO> teachers = ejb.teacher_readall();
+		System.out.println("TeacherLogic: " + teachers);
 		
-		for (TeacherDTO teacherDTO : teachers) {
-			firstname = teacherDTO.getFirstName();
-			lastname = teacherDTO.getLastName();
-			phoneNo = teacherDTO.getPhoneNo();
-			email = teacherDTO.getEmail();
-			role = teacherDTO.getRole();
-		}
+		return teachers;
+//		for (TeacherDTO teacherDTO : teachers) {
+//			firstname = teacherDTO.getFirstName();
+//			lastname = teacherDTO.getLastName();
+//			phoneNo = teacherDTO.getPhoneNo();
+//			email = teacherDTO.getEmail();
+//			role = teacherDTO.getRole();
+//		}
 	}
 	
 	public void update_student() {
