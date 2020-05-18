@@ -1,8 +1,11 @@
 package gruppe2.web;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+
 
 import EJB.AuthenticationLocal;
 import javaee.dto.StudentDTO;
@@ -45,7 +48,37 @@ public class TeacherLogic {
 		ejb.student_create(studentdto);
 	}
 	
-	// read teacher og student
+	public void read_student() {
+		StudentDTO studentdto = ejb.student_read(id);
+		
+		firstname = studentdto.getFirstName();
+		lastname = studentdto.getLastName();
+		phoneNo = studentdto.getPhoneNo();
+		email = studentdto.getEmail();
+		role = studentdto.getRole();
+	}
+	
+	public void read_teacher() {
+		TeacherDTO teacherdto = ejb.teacher_read(1);
+	
+		firstname = teacherdto.getFirstName();
+		lastname = teacherdto.getLastName();
+		phoneNo = teacherdto.getPhoneNo();
+		email = teacherdto.getEmail();
+		role = teacherdto.getRole();
+	}
+	
+	public void readall_teacher() {
+		List<TeacherDTO> teachers = ejb.teacher_readall();
+		
+		for (TeacherDTO teacherDTO : teachers) {
+			firstname = teacherDTO.getFirstName();
+			lastname = teacherDTO.getLastName();
+			phoneNo = teacherDTO.getPhoneNo();
+			email = teacherDTO.getEmail();
+			role = teacherDTO.getRole();
+		}
+	}
 	
 	public void update_student() {
 		StudentDTO studentdto = new StudentDTO();
@@ -59,7 +92,7 @@ public class TeacherLogic {
 		ejb.student_update(studentdto);
 	}
 	
-	public void read_teacher() {
+	public void update_teacher() {
 		TeacherDTO teacherdto = new TeacherDTO();
 		teacherdto.setFirstName(firstname);
 		teacherdto.setLastName(lastname);
