@@ -48,9 +48,13 @@
 <!-- https://www.primefaces.org/showcase/ui/input/listbox.xhtml -->
         <p:outputLabel for="basic" value="Uddannelse:" />
         <p:selectOneListbox id="basic" value="#{dtTeamView.educationId}">
-            <f:selectItems value="#{dtTeamView.allEducations}" var="education" itemLabel="#{education.name}" itemValue="#{education.educationId}" />
+            <f:selectItems value="#{dtTeamView.allEducations}" var="education" 
+		itemLabel="#{education.name}" 
+		itemValue="#{education.educationId}" />
         </p:selectOneListbox>
-    <p:commandButton value="Tilføj Hold" update=":teamTable" actionListener="#{dtTeamView.addTeam}" icon="pi pi-check" />
+    <p:commandButton value="Tilføj Hold" update=":teamTable" 
+	actionListener="#{dtTeamView.addTeam}" 
+	icon="pi pi-check" />
 </h:form>
 </h:body>
 </html>
