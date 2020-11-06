@@ -2,12 +2,17 @@ package users;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import javaee.dto.TeacherDTO;
 
 @Entity
 @Table(name = "teacher_user")
+@NamedQueries({
+    @NamedQuery(name = "Teacher.findAll", query = "SELECT t FROM Teacher t")
+})
 public class Teacher extends User {
 
 	@Column(name = "teacher_No", nullable = false)

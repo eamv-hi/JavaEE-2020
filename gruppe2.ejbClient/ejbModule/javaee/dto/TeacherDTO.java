@@ -101,6 +101,11 @@ public class TeacherDTO {
 		this.jobTitle = jobTitle;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "TeacherDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", phoneNo=" + phoneNo + ", role=" + role + ", teacherNo=" + teacherNo + ", hiredDate=" + hiredDate
+				+ ", jobTitle=" + jobTitle + "]";
+	}
 	
 }

@@ -51,48 +51,34 @@ body {
 							<!-- 							<td align="center" width="100px" valign="middle"></td> -->
 
 							<!--  <ui:insert name="body">Page Body</ui:insert>-->
-							<p:dataTable var="underviser" value="#{ETELLERANDET.teachers}">
-								<p:column headerText="Fornavn">
-									<h:outputText value="#{teacher.firstName}" />
-								</p:column>
-
-								<p:column headerText="Efternavn">
-									<h:outputText value="#{teacher.lastName}" />
-								</p:column>
-
-								<p:column headerText="Email">
-									<h:outputText value="#{teacher.email}" />
-								</p:column>
-
-								<p:column headerText="Telefon">
-									<h:outputText value="#{teacher.phoneNo}" />
-								</p:column>
-
-								<p:column headerText="Rolle">
-									<h:outputText value="#{teacher.role}" />
-								</p:column>
+							<h:form id="UnderviserTabel" value="">		
+							<h:commandButton value="Indlæs Undervisere" id="submit" action="#{teacherLogic.readall_teacher}"></h:commandButton>
+				
+							<p:dataTable var="underviser" action="#{teacherLogic.readall_teacher}" value=""> <!--  skal have value før tabellen viser noget -->
+								
+								<ui:repeat value="#{teacherLogic.readall_teacher.teachers}" var="teacher">
+									<p:column headerText="Fornavn" value="Fornavn">
+										<h:outputText value="#{teacherLogic.firstname}" />
+									</p:column>
+	
+									<p:column headerText="Efternavn">
+										<h:outputText value="#{teacherLogic.lastname}" />
+									</p:column>
+	
+									<p:column headerText="Email">
+										<h:outputText value="#{teacherLogic.email}" />
+									</p:column>
+	
+									<p:column headerText="Telefon">
+										<h:outputText value="#{teacherLogic.phoneNo}" />
+									</p:column>
+	
+									<p:column headerText="Rolle" value="Rolle">
+										<h:outputText value="#{teacherLogic.role}" />
+									</p:column>
+								</ui:repeat>
 							</p:dataTable>
-							<!-- <table border="" cellspacing="0">
-								<tbody>
-									<tr bgcolor="#CAD6E0">
-										<td>Firstname</td>
-										<td>Lastname</td>
-										<td>Phone</td>
-										<td>Email</td>
-										<td>Rolle</td>
-									</tr>
-									<ui:repeat var="#{teacherLogic.teachers()}" value="Teacher">
-										<tr>
-											<td nowrap="nowrap">{#Teacher.name}</td>
-											<td nowrap="nowrap">Test EfternavnTeacher Efternavn</td>
-											<td nowrap="nowrap">Test TelefonTeacher Telefon</td>
-											<td nowrap="nowrap">Test EmailTeacher Email</td>
-											<td nowrap="nowrap">Test RolleTeacher Rolle</td>
-										</tr>
-										<h:commandButton value="Teacher" />
-									</ui:repeat>
-								</tbody>
-							</table> -->
+							</h:form>
 						</tbody>
 					</table>
 				</td>

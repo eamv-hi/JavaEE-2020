@@ -1,8 +1,12 @@
 package EJB;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 
 import javaee.dto.StudentDTO;
 import javaee.dto.TeacherDTO;
@@ -14,6 +18,7 @@ import users.Teacher;
 public class Authentication implements AuthenticationLocal {
 
 	@PersistenceContext private EntityManager em;
+	public List<TeacherDTO> list = new ArrayList<> ();
 
 	public void student_create(StudentDTO student) {
 		Student newstudent = new Student();
@@ -59,6 +64,15 @@ public class Authentication implements AuthenticationLocal {
 		}else {
 			throw new RuntimeException("Kunne ikke finde studerende" + id);
 		}
+	}
+	
+	public List<TeacherDTO> teacher_readall() {
+		Teacher findteacher = em.find(Teacher.class, "SELECT * FROM \"PUBLIC\".\"TEACHER_USER\"");
+		while(findteacher != null){
+			list.add(findteacher.todto());
+		}
+			return list;
+		
 	}
 
 	public void student_update(StudentDTO student) {

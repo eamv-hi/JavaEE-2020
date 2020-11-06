@@ -9,7 +9,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import gruppe3.ejbClient.DTO.EducationDTO;
 import gruppe3.ejbClient.DTO.TeamDTO;
+import gruppe3.ejbClient.beans.EducationBeanLocal;
 import gruppe3.ejbClient.beans.TeamBeanLocal;
 
 @Named("dtTeamView")
@@ -58,5 +60,12 @@ public class TeamOverview implements Serializable {
 		teamDTO.setEducationId(educationId);
 		
 		team.Create(teamDTO);
+	}
+	
+	@Inject 
+	private EducationBeanLocal education;
+	
+	public List<EducationDTO> getAllEducations(){
+		return education.getAllEducations();
 	}
 }

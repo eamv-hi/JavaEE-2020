@@ -48,13 +48,13 @@
 <!-- https://www.primefaces.org/showcase/ui/input/listbox.xhtml -->
         <p:outputLabel for="basic" value="Uddannelse:" />
         <p:selectOneListbox id="basic" value="#{dtTeamView.educationId}">
-        <!-- #TODO implementere forløkke -->
-            <f:selectItem itemLabel="Datamatiker" itemValue="1" />
-            <f:selectItem itemLabel="Multimedia-Designer" itemValue="2" />
-            <f:selectItem itemLabel="Finansøkonom" itemValue="3" />
-        	<!--<f:selectItems value="#{TeamOverview.options}"  itemLabel="#{EducationDTO.name}" itemValue="#{EducationDTO.educationId}" /> -->
+            <f:selectItems value="#{dtTeamView.allEducations}" var="education" 
+		itemLabel="#{education.name}" 
+		itemValue="#{education.educationId}" />
         </p:selectOneListbox>
-    <p:commandButton value="Tilføj Hold" update=":teamTable" actionListener="#{dtTeamView.addTeam}" icon="pi pi-check" />
+    <p:commandButton value="Tilføj Hold" update=":teamTable" 
+	actionListener="#{dtTeamView.addTeam}" 
+	icon="pi pi-check" />
 </h:form>
 </h:body>
 </html>
