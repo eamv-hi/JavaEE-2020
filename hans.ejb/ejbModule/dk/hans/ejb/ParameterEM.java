@@ -50,7 +50,7 @@ public class ParameterEM {
 	public void delete(String key) {
 		ParameterEntity entity = em.find(ParameterEntity.class, key);
 		if (entity != null) {
-			em.remove(entity);;
+			em.remove(entity);
 		} else {
 			throw new RuntimeException("No ParameterEntity found with key = " + key);
 		}
